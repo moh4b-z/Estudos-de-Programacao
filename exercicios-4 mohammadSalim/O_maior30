@@ -1,0 +1,6 @@
+numero = int(input('digite o número: '))
+
+numero_por_2 = numero*2
+
+if numero_por_2 >= 30:
+    print (f'O némero multiplicado por 2 é igual a {numero_por_2}')

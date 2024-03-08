@@ -1,0 +1,12 @@
+
+A = float(input('digite o número: '))
+
+B = float(input('digite o número: '))
+
+
+if A > B:
+    print(A-B)
+else:
+    print(B-A)
+
+    

@@ -1,0 +1,26 @@
+A = float(input('digite o número de A: '))
+B = float(input('digite o número de B: '))
+C = float(input('digite o número de C: '))
+D = float(input('digite o número de D: '))
+
+
+A_por_3 = A/3/2
+B_por_3 = B/3/2
+C_por_3 = C/3/2
+D_por_3 = D/3/2
+
+
+
+ABCD3 = {'A': A_por_3, 'B': B_por_3, 'C': C_por_3, 'D': D_por_3}
+#{} são usadas para criar dicionários e conjuntos 
+divisível_por_3e2 = [(nome, valor*3*2) for nome, valor in ABCD3.items() if valor.is_integer()]
+#[]são usados para definir listas, que são coleções ordenadas e mutáveis de itens.
+# for é uma estrutura de controle de fluxo que é usada para iterar sobre elementos de uma sequência (como uma lista, tupla, string, etc.) ou sobre qualquer objeto iterável. Ele executa um bloco de código uma vez para cada item na sequência.
+# In para verificar se um elemento está presente em uma sequência
+# .is_intege  seve para verificar se um valor é um número inteiro
+if divisível_por_3e2:
+    print("Números divisíveis por 3 e 2:")
+    for nome, valor in divisível_por_3e2:
+        print(f'{nome}: {valor}')
+else:
+    print("Nenhum número inteiro é divisível por 3 e 2, entre os 4.")

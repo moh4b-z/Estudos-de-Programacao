@@ -1,0 +1,10 @@
+
+Nome = input('digite o seu nome: ')
+Sexo = input('digite o seu sexo (M ou F): ')
+
+if Sexo == "M":
+    print ('llmo.Sr.', Nome)
+elif Sexo == "F":
+    print ('llma.Sra', Nome)
+else:
+    print ('Sexo informado inválido')
