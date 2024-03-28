@@ -5,7 +5,7 @@ opcao = 1
 def mostra_menu():
 
     print ('Escolha uma opção:')
-    print ('1 - Triángulo')
+    print ('1 - Triangulo')
     print ('2 - Quadrilatero')
     print ('3 - Circulo')
     print ('0 - sair')
@@ -32,15 +32,23 @@ while opcao != 0:
         maior = max(lados)
         lados.remove(maior)
 
+        perimetro = lado1 + lado2 + lado3
+
         if maior >= min(lados) + max(lados):
             print ('Não é um triangulo')
 
 
         elif lado1 == lado2 == lado3:
+            altura = ((3**0.5)* lado1) / 2
+            area = altura * lado1 / 2
             print ('Triângulo equilatero')
+            print (f'A área aproximadamente é {area}² e o perimetro aproximadamente {perimetro}')
 
         elif lado1 == lado2 or lado1 == lado3 or lado2 == lado3:
+            altura = (((max(lados))**2)-((min(lados))**2)/4)**0.5
+            area = altura * (min(lados)) / 2
             print('Triângulo isósceles')
+            print (f'A área aproximadamente é {area}² e o perimetro aproximadamente {perimetro}')
 
         else:
             print('Triângulo escaleno')
@@ -111,5 +119,5 @@ while opcao != 0:
         raio = float(input('Qual é o raio do seu circulo? '))
         area = (raio**2) * 3.14
         perimetro = (raio*2)*3.14
-        print (f'A área é {area}² e o perimetro {perimetro}')
+        print (f'A área aproximadamente é {area}² e o perimetro aproximadamente {perimetro}')
 
