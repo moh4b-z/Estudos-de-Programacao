@@ -10,10 +10,11 @@ while contador <= 30:
     listaA.append(numero1)
     contador += 1
 
-for i in range(0, len(lista1), 2):
-    lista2.append(lista1[i])
-    if i + 1 < len(lista1):
-        lista1[i], lista1[i + 1] = lista1[i + 1], lista1[i]
+for i, elemento in enumerate(lista_original):
+    if i % 2 == 0:
+        lista_destino1.append(elemento)
+    else:
+        lista_destino2.append(elemento)
 
 for numeroIP, numeroP in zip(pares, impares):
 
