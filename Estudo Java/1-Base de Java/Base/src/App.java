@@ -18,7 +18,7 @@ public class App {
         // variaves para numeros decimas
 
         float numeroQuaquer = 2.98f; // precisa colocar um 'f' no final para ele não ler como int
-        double numeroGrandeDecimal = 3.14283234373873875773;
+        double numeroGrandeDecimal = 3.14283234373873873;
 
         System.out.println(numeroQuaquer);
         System.out.println(numeroGrandeDecimal);

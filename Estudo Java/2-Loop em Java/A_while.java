@@ -12,5 +12,16 @@ public class A_while {
             contador++;
             
         }
+
+        /*
+         * do {
+         * 
+         *  double contador2= (Math.pow(contador,2));
+
+            System.out.print(contador2);
+
+            contador++;
+         * }while (contador <= finall)
+          a verificação é no final então ele pelo menos vai executar uma vez*/
     }
 }
