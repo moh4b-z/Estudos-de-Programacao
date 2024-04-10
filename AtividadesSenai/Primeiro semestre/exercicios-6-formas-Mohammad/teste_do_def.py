@@ -16,6 +16,7 @@ def pegar_valor():
 while opcao != 0:
     mostra_menu()
     opcao = int(input('-> '))
+    
     if opcao == 0:
         print ('Saindo')
         break
