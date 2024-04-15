@@ -120,6 +120,42 @@ public class fomas_escolhar {
                 }
                 else {
                     System.out.println("Não é um quadrado e rentagulo");
+                    System.out.print("Quer saber se realmente é um quadrilatero [S/N]? ");
+                    String resposta = scanner.next();
+
+                    if (resposta == "S") {
+                        System.out.println("Ângulos opostos aos respectivos lados");
+
+                        System.out.print("Ângulo oposto ao lado 1? ");
+                        double angulo1 = scanner.nextFloat();
+                        System.out.print("Ângulo oposto ao lado 2? ");
+                        double angulo2 = scanner.nextFloat();
+                        System.out.print("Ângulo oposto ao lado 3? ");
+                        double angulo3 = scanner.nextFloat();
+                        System.out.print("Ângulo oposto ao lado 4? ");
+                        double angulo4 = scanner.nextFloat();
+
+
+                        double somaAngulos = angulo1 + angulo2 + angulo3 + angulo4;
+
+                        if (somaAngulos == 360) {
+                            double Sp = perimetro/2;
+                            double abcd = angulo1 * angulo2 * angulo3 * angulo4;
+
+                            double Bretschneider = Math.sqrt((Sp - lado1) * (Sp - lado2) * (Sp - lado3) * (Sp - lado4) - abcd * ((angulo1 + angulo3) / 2));
+
+                            System.out.println("É um quadrilatero");
+                            System.out.println("A área é "+Bretschneider+"² e o perimetro "+perimetro);
+                            
+                        }
+                        else{
+                            System.out.println("Não é um quadrilatero");
+                        }
+                        
+                    }
+                    else {
+                        System.out.println("Voltando");     
+                    }
                 }
 
             }
