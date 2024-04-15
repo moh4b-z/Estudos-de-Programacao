@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-
-
-public class Formas {
+public class fomas_escolhar {
 
     static void mostra_menu() {
         System.out.println("Escolha uma opção:");
@@ -39,7 +37,7 @@ public class Formas {
                 float lado3 = scanner.nextFloat();
                 lados[2] = lado3;
 
-                //vai começa a locura para mim que só tava progamando em Python
+                float perimetro = lado1 + lado2 + lado3;
 
                 // Inicialize o máximo e o mínimo com o primeiro elemento do array
                 float maximo = lados[0];
@@ -70,21 +68,22 @@ public class Formas {
                 }
 
                 else if (lado1 == lado2 && lado3 == lado2) {
+                    double altura = (Math.sqrt(3) / 2) * lado1;
+                    double area = altura * lado1 / 2;
                     System.out.println("Triângulo equilatero");
+                    System.out.println("A área aproximadamente é "+area+"² e o perimetro aproximadamente "+perimetro);
                 }
 
-                else if (lado1 == lado2 && lado3 != lado1) {
+                else if (lado1 == lado2 && lado3 != lado1 || lado1 == lado3 && lado2 != lado1 || lado3 == lado2 && lado3 != lado1) {
+                    double altura = (Math.sqrt(Math.pow(maximo, 2) - Math.pow(minimo, 2) / 4));
+                    double area = altura * minimo / 2;
                     System.out.println("Triângulo isósceles");
-                }
-                else if (lado1 == lado3 && lado2 != lado1) {
-                    System.out.println("Triângulo isósceles");
-                }
-                else if (lado3 == lado2 && lado3 != lado1) {
-                    System.out.println("Triângulo isósceles");
+                    System.out.println("A área aproximadamente é "+area+"² e o perimetro aproximadamente "+perimetro);
                 }
 
                 else{
                     System.out.println("Triângulo escaleno");
+                    
                 }
 
             }
@@ -102,17 +101,22 @@ public class Formas {
                 System.out.print("Digite o lado 4: ");
                 float lado4 = scanner.nextFloat();
 
+                float perimetro = lado1 + lado2 + lado3 + lado4;
+
                 if (lado1 == lado2 && lado2 == lado3 && lado3 == lado4) {
+                    double area = lado2 * lado1;
                     System.out.println("É um quadrado");
+                    System.out.println("A área é "+area+"² e o perimetro "+perimetro);
+                }
+                else if (lado1 == lado3 && lado2 == lado4 || lado3 == lado2 && lado1 == lado4) {
+                    double area = lado2 * lado1;
+                    System.out.println("É um rentagulo");
+                    System.out.println("A área é "+area+"² e o perimetro "+perimetro);
                 }
                 else if (lado1 == lado2 && lado3 == lado4) {
+                    double area = lado2 * lado3;
                     System.out.println("É um rentagulo");
-                }
-                else if (lado1 == lado3 && lado2 == lado4) {
-                    System.out.println("É um rentagulo");
-                }
-                else if (lado3 == lado2 && lado1 == lado4) {
-                    System.out.println("É um rentagulo");
+                    System.out.println("A área é "+area+"² e o perimetro "+perimetro);
                 }
                 else {
                     System.out.println("Não é um quadrado e rentagulo");
