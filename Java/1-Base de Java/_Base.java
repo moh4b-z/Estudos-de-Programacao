@@ -1,4 +1,4 @@
-public class App {
+public class _Base {
     public static void main(String[] args) throws Exception {
         System.out.println("oi seus malucos");
         System.out.println("aaaaaaaaa");
