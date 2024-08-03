@@ -10,13 +10,14 @@ function ordenar(lista) {
     let maiorQuePivo = []
     let menorQuePivo = []
 
-    let listaOrdenarda = []
+    let listaOrdenada = []
 
-    for (){
-        if(intem > pivo){
-            maiorQuePivo.push(intem)
+    for (let i = 1; i < numerosDeElementos; i++){
+        let item = lista[i];
+        if(item > pivo){
+            maiorQuePivo.push(item)
         }else{
-            menorQuePivo.push(intem)
+            menorQuePivo.push(item)
         }
 
     }
@@ -24,13 +25,16 @@ function ordenar(lista) {
     maiorQuePivo = ordenar(maiorQuePivo)
     menorQuePivo = ordenar(menorQuePivo)
 
-    for (){
-        listaOrdenarda.push()
-    }
-    listaOrdenarda.push(pivo)
-    for (){
-        listaOrdenarda.push()
-    }
+    listaOrdenada = [...menorQuePivo, pivo, ...maiorQuePivo];
 
-    return lista_ordenada
+    return listaOrdenada
 }
+
+
+
+let grupo = [4, 7, 6,5, 3, 2, 1, 99, 6, 17]
+
+grupo = ordenar(grupo)
+
+
+console.log(grupo)
