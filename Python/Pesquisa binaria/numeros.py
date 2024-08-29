@@ -6,4 +6,4 @@ def achar(lista, escolha):
 
 
     while lista[i] == escolha:
-        i = 
+        i = 2
