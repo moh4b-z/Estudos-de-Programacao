@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-light-color: #b5c2d2;
+    --secondary-light-color: #8fabc1;
+    --tree-light-color: #607a91;
+
+    --primary-dark-color: #09192f;
+    --secondary-dark-color: #2e4a6c;
+    --tree-dark-color: #465567;
+
+    --primary-contrast-color: #e3c758;
+    --secondary-contrast-color: #aba36f;
+    --tree-contrast-color: #9c9a70;
+}
+
+body{
+    background-color: var(--primary-dark-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Righteous", sans-serif;
+}
+
+h1{
+    color: var(--primary-contrast-color);
+}
+
+header{
+    display: flex;
+    top: 0;
+    height: 70px;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-light-color);
+}
+
+header div{
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+footer{
+    height: 30px;
+    position: sticky;
+    top: 100%;
+    padding: 4px;
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--primary-contrast-color);
+}
