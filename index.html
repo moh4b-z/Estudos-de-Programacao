@@ -3,38 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <link rel="stylesheet" href="./style.css">
     <title>Meus estudos de programação</title>
 </head>
 <body>
     <header>
+        <li><a href="https://www.linkedin.com/in/mohammad-salim-197481320/">
+            <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+        <li><a href="https://github.com/moh4b-z">
+            <ion-icon name="logo-github"></ion-icon>
+        </a></li>
         <div>
             <h1>Meus estudos de programação</h1>
             <span>Desde 2024</span>
         </div>
     </header>
+
     <main>
-        <div>
+        <div class="upper">
+            <div class="description">
+                <h2>Sobre</h2>
+                <p>Fiz esse site para deixar uma facil visualização para quem quiser ver meu historico de estudos e um 
+                    pouco da minha formação, tendo os meus projetos para visualização
+                </p>
+            </div>
+            <div class="programmingFolder"></div>
+        </div>
+        <div class="lower">
+            <h3>Projetos possivel para serem visualisados</h3>
+            <span>Os projetos estão em ordem de finalização, porém a ordem pode ser trocada</span>
             <div>
-                <div>
-                    <a href="./Script para linux e windows/index.html">Script para linux e windows</a>
+                <div class="listDescription">
+                    <span>Lisata de projetos do SENAI</span>
+                    <button class="ordering">Ordem</button>
                 </div>
+                <div class="listProjects" id="listSenai"></div>
             </div>
             <div>
-                <div>
-                    <a href="./SENAI 2024-2025/2- Front-end 2° semestre/pokemon/index.html">Site promoçonal pokemon</a>
+                <div class="listDescription">
+                    <span>Lisata de projetos para estudo ou para revolver um problema particular</span>
+                    <button class="ordering">Ordem</button>
                 </div>
-            </div>
-            <div>
-                <div></div>
+                <div class="listProjects" id="myList"></div>
             </div>
         </div>
     </main>
+
     <footer>
-        <h2>Mohammad Salim Soares Silva</h2>
+        <div>
+            <h2>Mohammad Salim Soares Silva</h2>
+        </div>
     </footer>
 </body>
 </html>

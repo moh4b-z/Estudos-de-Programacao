@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 :root{
-    --primary-light-color: #b5c2d2;
-    --secondary-light-color: #8fabc1;
-    --tree-light-color: #607a91;
+    --primary-light-color: #95c8e1;
+    --secondary-light-color: #b5c2d2;
+    --tree-light-color: #8fabc1;
 
     --primary-dark-color: #09192f;
     --secondary-dark-color: #2e4a6c;
@@ -20,6 +20,7 @@
 body{
     background-color: var(--primary-dark-color);
     height: 100vh;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     font-family: "Righteous", sans-serif;
@@ -27,6 +28,10 @@ body{
 
 h1{
     color: var(--primary-contrast-color);
+}
+button{
+    cursor: pointer;
+    border: none;
 }
 
 header{
@@ -52,6 +57,52 @@ main{
     flex-direction: column;
     justify-content: center;
 }
+
+.upper{
+    display: flex;
+    padding: 5px;
+}
+.description{
+    width: 50%;
+}
+.description h2{
+    font-size: 30px;
+    color: var(--primary-light-color);
+    filter: drop-shadow(6px 2px 4px var(--tree-dark-color));
+}
+
+
+.lower{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.lower h3{
+    color: var(--primary-light-color);
+    filter: drop-shadow(6px 2px 4px var(--tree-dark-color));
+}
+
+.listDescription{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.ordering{
+    height: 100%;
+    width: 4vw;
+    padding: 5px;
+    color: var(--tree-contrast-color);
+    background-color: transparent;
+    border: 1px solid var(--primary-light-color);
+    box-shadow: 0 0 8px var(--tree-light-color);
+}
+
+.ordering:hover{
+    background-color: var(--secondary-light-color);
+}
+
 footer{
     height: 30px;
     position: sticky;
@@ -63,4 +114,13 @@ footer{
     justify-content: center;
     font-size: 10px;
     color: var(--primary-contrast-color);
+}
+
+footer div{
+    display: flex;
+    width: 20vw;
+    background-color: var(--primary-dark-color);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10vw;
 }
