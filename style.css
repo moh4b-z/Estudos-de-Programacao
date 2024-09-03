@@ -9,7 +9,7 @@
     --tree-light-color: #8fabc1;
 
     --primary-dark-color: #09192f;
-    --secondary-dark-color: #2e4a6c;
+    --secondary-dark-color: #122945;
     --tree-dark-color: #465567;
 
     --primary-contrast-color: #e3c758;
@@ -32,6 +32,9 @@ h1{
 button{
     cursor: pointer;
     border: none;
+}
+a{
+    text-decoration: none;
 }
 
 header{
@@ -56,11 +59,27 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: var(--tree-light-color);
 }
 
+/**************************************************
+upper
+a parte superior do main
+**************************************************/
+
 .upper{
-    display: flex;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*********
+upperUpper
+*********/
+
+.upperUpper{
+    display: flex;
 }
 .description{
     width: 50%;
@@ -72,12 +91,79 @@ main{
 }
 
 
+.programmingFolder{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+
+.programmingFolderToDownload{
+    display: flex;
+    justify-content: space-between;
+}
+.programmingFolderToDownload a{
+    color: var(--secondary-contrast-color);
+}
+
+
+/*********
+upperLower
+*********/
+
+.studyMaterialCarousel{
+    display: flex;
+    padding-block: 1vh;
+}
+
+.studyMaterialCarousel a{
+    width: 12vw;
+    height: 10vh;
+    margin-inline: 1vw;
+}
+
+
+.studyMaterialContainer{
+    width: 12vw;
+    height: 10vh;
+    background-color: var(--secondary-dark-color);
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-light-color);
+}
+
+
+.studyMaterialContainer h5{
+    height: 40%;
+    font-size: 14px;
+    color: var(--secondary-light-color);
+}
+.studyMaterialContainer span{
+    height: 25%;
+    font-size: 8px;
+    color: var(--tree-contrast-color);
+}
+.studyMaterialContainer p{
+    height: 35%;
+    font-size: 12px;
+    color: var(--primary-contrast-color);
+}
+
+/**************************************************
+**************************************************/
+
+
+/**************************************************
+lower
+a parte inferio do main
+**************************************************/
+
+
 .lower{
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
-
 .lower h3{
     color: var(--primary-light-color);
     filter: drop-shadow(6px 2px 4px var(--tree-dark-color));
@@ -102,6 +188,11 @@ main{
 .ordering:hover{
     background-color: var(--secondary-light-color);
 }
+
+
+/**************************************************
+**************************************************/
+
 
 footer{
     height: 30px;
