@@ -25,7 +25,6 @@ body{
     flex-direction: column;
     font-family: "Righteous", sans-serif;
 }
-
 h1{
     color: var(--primary-contrast-color);
 }
@@ -46,7 +45,6 @@ header{
     justify-content: center;
     color: var(--primary-light-color);
 }
-
 header div{
     display: flex;
     flex-direction: column;
@@ -101,11 +99,15 @@ upperUpper
 .programmingFolderToDownload{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 .programmingFolderToDownload a{
     color: var(--secondary-contrast-color);
 }
-
+.programmingFolderToDownload a:last-child{
+    padding: 2px 5px;
+    background-color: var(--tree-dark-color);
+}
 
 /*********
 upperLower
@@ -130,6 +132,11 @@ upperLower
     padding: 5px;
     border-radius: 8px;
     border: 1px solid var(--primary-light-color);
+    transition: 0.5s;
+}
+.studyMaterialContainer:hover{
+    filter: drop-shadow(2px 2px 4px var(--tree-contrast-color));
+    transform: scale(1.01);
 }
 
 
