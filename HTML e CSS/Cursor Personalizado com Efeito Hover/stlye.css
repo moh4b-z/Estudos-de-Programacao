@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    cursor: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.lista{
+    display: flex;
+    flex-direction: column;
+}
+
+.lista a{
+    display: inline-block;
+    margin: 10px 0;
+    color: aliceblue;
+    letter-spacing: .1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.cursor{
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    background-color: aliceblue;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transition: 0.1s;
+}
+
+
+.lista li:hover ~ .cursor{
+    transform: translate(-50%,-50%) scale(4);
+    background-color: black;
+    box-shadow: 0 0 0 100vh aliceblue;
+}

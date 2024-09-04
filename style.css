@@ -58,6 +58,10 @@ header div{
     width: 100%;
 }
 
+.contacts a {
+    display: inline-block;
+}
+
 .contacts ion-icon{
     height: 20px;
     width: 20px;
