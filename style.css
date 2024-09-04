@@ -19,8 +19,8 @@
 
 body{
     background-color: var(--primary-dark-color);
-    height: 100vh;
     padding: 5px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Righteous", sans-serif;
@@ -38,8 +38,8 @@ a{
 
 header{
     display: flex;
-    top: 0;
-    height: 70px;
+    flex-direction: column;
+    height: 140px;
     padding: 4px;
     align-items: center;
     justify-content: center;
@@ -52,6 +52,25 @@ header div{
     align-items: center;
     justify-content: center;
 }
+
+.contacts {
+    display: flex;
+    width: 100%;
+}
+
+.contacts ion-icon{
+    height: 20px;
+    width: 20px;
+    color: var(--primary-light-color);
+    padding: 5px;
+    margin-bottom: 10px;
+    transition: 1s;
+}
+
+.contacts ion-icon:hover{
+    transform: scale(1.2);
+}
+
 
 main{
     display: flex;
@@ -179,13 +198,13 @@ a parte inferio do main
 .listDescription{
     display: flex;
     justify-content: space-between;
+    width: 100%;
     padding: 5px;
 }
 
 .ordering{
     height: 100%;
-    width: 4vw;
-    padding: 5px;
+    padding: 5px 10px;
     color: var(--tree-contrast-color);
     background-color: transparent;
     border: 1px solid var(--primary-light-color);
@@ -203,8 +222,11 @@ a parte inferio do main
 
 footer{
     height: 30px;
-    position: sticky;
+    width: 100%;
+    position: absolute;
     top: 100%;
+    left: 50vw;
+    right: 50vw;
     padding: 4px;
     display: flex;
     font-style: italic;
