@@ -1,4 +1,2 @@
 var Exercicios = require('./modelo/funcoesDePerguntas')
-
-
-Exercicios.perguntasE1(1)
+Exercicios.perguntasE2(1)

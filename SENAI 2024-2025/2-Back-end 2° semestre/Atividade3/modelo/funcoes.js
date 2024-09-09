@@ -64,52 +64,79 @@ function GerenciarNota
     let exame
     let exameFinal
 
-    validarTexto(nAluno, sAluno)
-    validarTexto(nProf, sProf)
-    validarTexto(nCurso, nDiciplina)
-    validarDados(nota1, nota2)
-    validarDados(nota3, nota4)
+    let status = false
+
+    if(!(validarTexto(nAluno, sAluno)) ||
+        !(validarTexto(nProf, sProf)) ||
+        !(validarTexto(nCurso, nDiciplina)) ||
+        !(validarDados(nota1, nota2))||
+        !(validarDados(nota3, nota4))
+    ){
+        console.log(`       **********ERROS NAS VALIDAÇÕES**********
+        Validação nome do Aluno e Sexo: ${validarTexto(nAluno, sAluno)}
+        Validação nome do Professor e Sexo: ${validarTexto(nProf, sProf)}
+        Validação nome do Curso e da diciplina: ${validarTexto(nCurso, nDiciplina)}
+        Validação nota 1 e 2: ${validarDados(nota1, nota2)}
+        Validação nota 3 e 4: ${validarDados(nota3, nota4)}
+        
+        **********FIM DA MENSAGEM DE ERROS NAS VALIDAÇÕES**********`)
+    }else{
+        console.log('0')
+    }
 
     let media = (calcularNota(nota1, nota2, nota3, nota4))
 
     if(sAluno = 'F'){
+        status = true
         generoAluno = 'A'
     }else if (sAluno = 'M'){
-        generoAluno = '0'
+        status = true
+        generoAluno = 'O'
     }else{
-        console.log('Não foi colocado F e nem M no campo')
+        console.log('Não foi colocado F e nem M no campo do aluno')
+        status = false
     }
 
     if(sProf = 'F'){
         generoProf = 'Professora'
+        status = true
     }else if (sProf = 'M'){
         generoProf = 'Professor'
+        status = true
     }else{
-        console.log('Não foi colocado F e nem M no campo')
+        console.log('Não foi colocado F e nem M no campo mo campo do Professor')
+        status = false
     }
 
     if(media >= 70){
         statusAluno = `APROVAD${generoAluno}`
         exame = 'Não foi nessecario fazer o exame'
         exameFinal = 'Não foi nessecario fazer o exame'
+        status = true
     }else if(69 <= media >= 50){
         exame = exameRecupera(1)
         exameFinal = (exame + media) / 2
+        validar1Dado(exameFinal)
         if (exameFinal >= 60){
             statusAluno = `APROVAD${generoAluno}`
         }else{
             statusAluno = `REPROVAD${generoAluno}`
         }
+        status = true
     }else if(media <= 50){
         statusAluno = `REPROVAD${generoAluno}`
         exame = 'Não foi feito o exame, pela nota muito baixa'
         exameFinal = 'Não foi feito o exame, pela nota muito baixa'
+        status = true
     }else{
         statusAluno = 'O correu um erro tente colocar as notas denovo'
         exameFinal = 'O correu um erro tente colocar as notas denovo'
+        exame = 'O correu um erro tente colocar as notas denovo'
+        status = false
     }
 
-    console.log(`   ${generoAluno} alun${generoAluno.toLowerCase()} ${nAluno} foi ${statusAluno} na disciplina ${nDiciplina}.
+    console.log(`           
+    ${generoAluno} alun${generoAluno.toLowerCase()} ${nAluno} foi ${statusAluno} na disciplina ${nDiciplina}.
     Curso: ${nCurso}
     ${generoProf}: ${nProf}
     Notas d${generoAluno.toLowerCase()} alun${generoAluno.toLowerCase()}: ${nota1}, ${nota2}, ${nota3}, ${nota4}, Nota do Exame: ${exame}
@@ -118,16 +145,15 @@ function GerenciarNota
     )
 }
 
-function exameRecupera(){
+function exameRecupera(pontaPe){
     entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
-        let exame = notaExame
-        validar1Dado(exame)
-        if(!(0<= exame <= 100)){
+        var exameR = notaExame
+        validar1Dado(exameR)
+        if(!(0<= exameR <= 100)){
             console.log('ERROR: a nota deve ir de 0 a 100')
         }
-
-        return exame
     })
+    return exameR
 }
 
 function calcularNota(notaP, notaS, notaT, notaQ){
@@ -136,13 +162,21 @@ function calcularNota(notaP, notaS, notaT, notaQ){
     let nota3 = notaT
     let nota4 = notaQ
     let media = false
-    validarDados(nota1, nota2)
-    validarDados(nota3, nota4)
-    if(0 <= nota1 <= 100 && 0 <= nota2 <= 100 && 0 <= nota3 <= 100 && 0 <= nota4 <= 100){
-        media = (nota1 + nota2 + nota3 + nota4)/4
+    if(
+        validarDados(nota1, nota2) ||
+        validarDados(nota3, nota4)
+    ){
+        if(0 <= nota1 <= 100 && 0 <= nota2 <= 100 && 0 <= nota3 <= 100 && 0 <= nota4 <= 100){
+            media = (nota1 + nota2 + nota3 + nota4)/4
+        }else{
+            console.log('ERROR: todas as notas devem ir de 0 a 100')
+        }
     }else{
-        console.log('ERROR: todas as notas devem ir de 0 a 100')
+        console.log('ERRO na validação da nota quando foi fazer a media')
+        validarDados(nota1, nota2)
+        validarDados(nota3, nota4)
     }
+    
     return media
 }
 
@@ -272,7 +306,14 @@ function validarDados(numeroP, numeroS){
         console.log('É necessario todos os campos preencidos')
         status = false
     }else if(isNaN(numero1) || isNaN(numero2)){
-        console.log('É necessario todos os campos serem numeros')
+        console.log(`   É necessario todos os campos serem numeros, 
+        Os tipos são:
+        Numero1: ${typeof numero1}
+        Numero2: ${typeof numero2}
+        Tão chegando como:
+        Numero1: ${numero1}
+        Numero2: ${numero2}
+        `)
         status = false
     }
     return status
@@ -287,7 +328,14 @@ function validarTexto(textoP, textoS){
         status = false
     }else if(typeof texto1 === 'string' && isNaN(texto1) || 
     typeof texto2 === 'string' && isNaN(texto2)){
-        console.log('É necessario que todos os campos não sejam numeros')
+        console.log(`   É necessario que todos os campos não sejam numeros, 
+        O tipos das entradas:
+        texto1: ${typeof texto1}
+        texto2: ${typeof texto2}
+        As entradas:
+        texto1: ${texto1}
+        texto2: ${texto2}
+        `)
         status = false
     }
     return status
@@ -315,10 +363,12 @@ function validar1Dado(numeroP){
     let status = true
 
     if(numero1 == ''){
-        console.log('É necessario todos os campos preencidos')
+        console.log('É necessario o campo se preencido')
         status = false
     }else if(isNaN(numero1)){
-        console.log('É necessario todos os campos serem numeros')
+        console.log(`   É necessario o campo ser um numero,
+            ele está como: ${numero1}
+            o tipo dele tá como: ${typeof numero1}`)
         status = false
     }
     return status
