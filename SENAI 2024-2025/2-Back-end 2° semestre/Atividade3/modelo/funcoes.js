@@ -81,7 +81,7 @@ function GerenciarNota
         
         **********FIM DA MENSAGEM DE ERROS NAS VALIDAÇÕES**********`)
     }else{
-        console.log('0')
+        console.log('0 erros')
     }
 
     let media = (calcularNota(nota1, nota2, nota3, nota4))
@@ -170,7 +170,7 @@ function calcularNota(notaP, notaS, notaT, notaQ){
             media = (nota1 + nota2 + nota3 + nota4)/4
         }else{
             console.log('ERROR: todas as notas devem ir de 0 a 100')
-        }
+        } 
     }else{
         console.log('ERRO na validação da nota quando foi fazer a media')
         validarDados(nota1, nota2)
@@ -191,7 +191,7 @@ function CriarTabuadas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFi
     validarDados(contadorI, contadorF)
 
     if(2 <= tabuadaI <= 200 && 2 <= tabuadaF <= 200 && 1 <= contadorI <= 50 && 1 <= contadorF <= 50){
-        for (tabuadaI; tabuadaI = tabuadaF; tabuadaI++) {
+        for (tabuadaI; tabuadaI <= tabuadaF; tabuadaI++) {
             tabuadaUnica(tabuadaI, contadorI, contadorF)
         }
     }else{
@@ -203,12 +203,15 @@ function tabuadaUnica(tabuadaInicial, contadorInicial, contadorFinal){
     let tabuadaI = tabuadaInicial
     let contadorI = contadorInicial
     let contadorF = contadorFinal
-    let resultado
+    let resultado = 1
+    let status = false
     console.log(`Tabuada do ${tabuadaI}`)
-    for(contadorI; contadorI = contadorF; contadorI++){
+    for(contadorI; contadorI <= contadorF; contadorI++){
         resultado = tabuadaI * contadorI
         console.log(`${tabuadaI} X ${contadorI} = ${resultado}`)
+        status = true
     }
+    return status
 }
 
 //Exercício 04
@@ -243,7 +246,7 @@ function geraNumeros(numeroInicial, numeroFinal, escolhaPergunta){
     if(validarDadosPI(numeroI, numeroF)){
         if(0 <= numeroI <= 500 || 100 <= numeroI <= 1000){
             if(escolha == 1){
-                if(contador % 2 == 0){
+                if(numeroI % 2 == 0){
                     gerarListaNumeros(numeroI, numeroF)
                     numeroI++
                     numeroF--
@@ -255,7 +258,7 @@ function geraNumeros(numeroInicial, numeroFinal, escolhaPergunta){
                     gerarListaNumeros(numeroI, numeroF)
                 }                
             }else if(escolha == 2){
-                if(contador % 2 == 0){
+                if(numeroI % 2 == 0){
                     gerarListaNumeros(numeroI, numeroF)
                 }else{
                     numeroI++
@@ -263,7 +266,7 @@ function geraNumeros(numeroInicial, numeroFinal, escolhaPergunta){
                     gerarListaNumeros(numeroI, numeroF)
                 }
             }else if(escolha == 3){
-                if(contador % 2 == 0){
+                if(numeroI % 2 == 0){
                     numeroI++
                     numeroF--
                     gerarListaNumeros(numeroI, numeroF)
@@ -281,7 +284,7 @@ function gerarListaNumeros(numeroInicial, numeroFinal){
     let contador = numeroInicial
     let numeroF = numeroFinal
     let status = false
-    let contadorDeRepeticoes = 1
+    let contadorDeRepeticoes = 0
     while(contador <= parseInt(numeroF)){
         status = true
         console.log(contador)
