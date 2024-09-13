@@ -81,6 +81,18 @@ function perguntasE2(escolhaPergunta){
     })
 }
 
+// por algum motivo duplicava as letras entodas as funções
+function exameRecupera(pontaPe){
+    entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
+        var exameR = notaExame
+        validar1Dado(exameR)
+        if(!(0<= exameR <= 100)){
+            console.log('ERROR: a nota deve ir de 0 a 100')
+        }
+    })
+    return exameR
+}
+
 // Pergunta 3
 function perguntasE3(escolhaPergunta){
     let escolha = escolhaPergunta
@@ -141,5 +153,6 @@ module.exports = {
     perguntasE2,
     perguntasE3,
     perguntasE4,
-    perguntasE5
+    perguntasE5,
+    exameRecupera
 }

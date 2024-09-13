@@ -7,12 +7,8 @@
  * Versão: 1.0 
  *********************************************************************************/
 
-var readline = require('readline')
-var entradaDeDados = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
 
+var Exercicios = require('./funcoesDePerguntas')
 
 //Exercício 01
 function IMC(altura, peso){
@@ -86,10 +82,10 @@ function GerenciarNota
 
     let media = (calcularNota(nota1, nota2, nota3, nota4))
 
-    if(sAluno = 'F'){
+    if(sAluno == 'F'){
         status = true
         generoAluno = 'A'
-    }else if (sAluno = 'M'){
+    }else if (sAluno == 'M'){
         status = true
         generoAluno = 'O'
     }else{
@@ -97,10 +93,10 @@ function GerenciarNota
         status = false
     }
 
-    if(sProf = 'F'){
+    if(sProf == 'F'){
         generoProf = 'Professora'
         status = true
-    }else if (sProf = 'M'){
+    }else if (sProf == 'M'){
         generoProf = 'Professor'
         status = true
     }else{
@@ -113,8 +109,8 @@ function GerenciarNota
         exame = 'Não foi nessecario fazer o exame'
         exameFinal = 'Não foi nessecario fazer o exame'
         status = true
-    }else if(69 <= media >= 50){
-        exame = exameRecupera(1)
+    }else if(69 <= media && media >= 50){
+        exame = Exercicios.exameRecupera(1)
         exameFinal = (exame + media) / 2
         validar1Dado(exameFinal)
         if (exameFinal >= 60){
@@ -145,16 +141,6 @@ function GerenciarNota
     )
 }
 
-function exameRecupera(pontaPe){
-    entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
-        var exameR = notaExame
-        validar1Dado(exameR)
-        if(!(0<= exameR <= 100)){
-            console.log('ERROR: a nota deve ir de 0 a 100')
-        }
-    })
-    return exameR
-}
 
 function calcularNota(notaP, notaS, notaT, notaQ){
     let nota1 = notaP
@@ -166,7 +152,7 @@ function calcularNota(notaP, notaS, notaT, notaQ){
         validarDados(nota1, nota2) ||
         validarDados(nota3, nota4)
     ){
-        if(0 <= nota1 <= 100 && 0 <= nota2 <= 100 && 0 <= nota3 <= 100 && 0 <= nota4 <= 100){
+        if(nota1 >= 0 && nota1 <= 100 && nota2 >= 0 && nota2 <= 100 && nota3 >= 0 && nota3 <= 100 && nota4 >= 0 && nota4 <= 100){
             media = (nota1 + nota2 + nota3 + nota4)/4
         }else{
             console.log('ERROR: todas as notas devem ir de 0 a 100')
