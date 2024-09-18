@@ -66,9 +66,37 @@ function perguntasE2(escolhaPergunta){
                                     let notaS = nota2
                                     entradaDeDados.question('Digite a nota 3: ', function(nota3){
                                         let notaT = nota3
-                                        entradaDeDados.question('Digite a nota 4: ', function(nota4){
+                                        entradaDeDados.question('Digite a nota 4: ', async function(nota4){
                                             let notaQ = nota4
-                                            missao3.GerenciarNota((nomeAluno, sexoAluno, nomeProf, sexoProf, nomeCurso, nomeDiciplina,notaP, notaS, notaT, notaQ))
+
+
+                                            let media = missao3.calcularNota(notaP, notaS, notaT, notaQ)
+                                            
+                                            let exameR = 'Não foi necessario fazer exame'
+                                            let exameFinal = 'Não foi nescessario fazer'
+
+                                            let generoAluno = (missao3.verificarGenero(sexoAluno))
+                                            let statusDoAluno = missao3.verificarNota(media, generoAluno)
+
+                                            if (statusDoAluno == 'RECUPERAÇÃO'){
+                                                await new entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
+                                                    exameR = Number(notaExame)
+                                                    missao3.validar1Dado(exameR)
+                                                    if(!(exameR >= 0 && exameR <= 100)){
+                                                        console.log('ERROR: a nota do exame deve ir de 0 a 100')
+                                                    }
+                                                })
+                                                exameFinal = (exameR + media) / 2
+                                            }
+
+                                            let generoProf = (missao3.verificarGenero(sexoProf))
+
+                                            if(generoProf == 'A'){
+                                                generoProf = 'Professora'
+                                            }else if(generoProf == 'O'){
+                                                generoProf = 'Professor'
+                                            }
+                                            missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDiciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno)
                                         })
                                     })
                                 })
@@ -82,16 +110,10 @@ function perguntasE2(escolhaPergunta){
 }
 
 // por algum motivo duplicava as letras entodas as funções
-function exameRecupera(pontaPe){
-    entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
-        var exameR = notaExame
-        validar1Dado(exameR)
-        if(!(0<= exameR <= 100)){
-            console.log('ERROR: a nota deve ir de 0 a 100')
-        }
-    })
-    return exameR
-}
+
+
+
+
 
 // Pergunta 3
 function perguntasE3(escolhaPergunta){
@@ -154,5 +176,4 @@ module.exports = {
     perguntasE3,
     perguntasE4,
     perguntasE5,
-    exameRecupera
 }

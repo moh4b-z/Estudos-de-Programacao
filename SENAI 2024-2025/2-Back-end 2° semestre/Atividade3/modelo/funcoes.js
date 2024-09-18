@@ -1,6 +1,6 @@
 /**********************************************************************************
- * Objetivo: 
- * 
+ * Objetivo: Aquivos responsável pela criação de tipo de funções e estrutura de 
+ * repetição
  * Data: 06/09/2024
  * Data Final: 13/09/2024
  * Autor: Mohammad
@@ -14,35 +14,45 @@ var Exercicios = require('./funcoesDePerguntas')
 function IMC(altura, peso){
     let alturaP = Number(String(altura).replace(',','.'))
     let pesoP = Number(String(peso).replace(',','.'))
-    let imc = alturaP/ pesoP**2
     let status = false
 
     if(validarDados(alturaP, pesoP)){
-        if(imc < 18.5){
-            console.log('Abaixo do peso')
-            status = true
-        }else if(18.5 < imc < 24.9){
-            console.log('Peso Normal')
-            status = true
-        }else if(25 < imc < 29.9){
-            console.log('Acima do peso')
-            status = true
-        }else if(30 < imc < 34.9){
-            console.log('Obesidade I')
-            status = true
-        }else if(35 < imc < 39.9){
-            console.log('Obesidade II')
-            status = true
-        }else if(imc > 40){
-            console.log('Obesidade III')
-            status = true
-        }
+        let imc = alturaP/ pesoP**2
+        return imc
+    }else{
+        return status
     }
-    return status
 }
+
+function calcularIMC(valorIMC){
+    let imc = valorIMC
+    let statusIMC = false
+
+    if(validar1Dado(imc)){if(imc < 18.5){
+        statusIMC = ('Abaixo do peso')
+
+    }else if(18.5 <= imc && imc <= 24.9){
+        statusIMC = ('Peso Normal')
+
+    }else if(25 <= imc && imc <= 29.9){
+        statusIMC = ('Acima do peso')
+
+    }else if(30 <= imc && imc <= 34.9){
+        statusIMC = ('Obesidade I')
+
+    }else if(35 <= imc && imc <= 39.9){
+        statusIMC = ('Obesidade II')
+
+    }else if(imc >= 40){
+        statusIMC = ('Obesidade III')
+    }}
+
+    return statusIMC
+}
+
+
 //Exercício 02
-function GerenciarNota
-(nomeAluno, sexoAluno, nomeProf, sexoProf, nomeCurso, nomeDiciplina,notaP, notaS, notaT, notaQ){
+function GerenciarNota(nomeAluno, sexoAluno, nomeProf, sexoProf, nomeCurso, nomeDiciplina, notaP, notaS, notaT, notaQ){
     let nAluno = nomeAluno
     let sAluno = sexoAluno
     let nProf = nomeProf
@@ -53,12 +63,9 @@ function GerenciarNota
     let nota2 = notaS
     let nota3 = notaT
     let nota4 = notaQ
-
-    let statusAluno
-    let generoAluno
-    let generoProf
-    let exame
-    let exameFinal
+    
+    let exame = 'Não foi nescessario fazer'
+    let exameFinal = 'Não foi nescessario fazer'
 
     let status = false
 
@@ -76,77 +83,80 @@ function GerenciarNota
         Validação nota 3 e 4: ${validarDados(nota3, nota4)}
         
         **********FIM DA MENSAGEM DE ERROS NAS VALIDAÇÕES**********`)
-    }else{
-        console.log('0 erros')
     }
-
     let media = (calcularNota(nota1, nota2, nota3, nota4))
 
-    if(sAluno == 'F'){
-        status = true
-        generoAluno = 'A'
-    }else if (sAluno == 'M'){
-        status = true
-        generoAluno = 'O'
-    }else{
-        console.log('Não foi colocado F e nem M no campo do aluno')
-        status = false
-    }
 
-    if(sProf == 'F'){
-        generoProf = 'Professora'
-        status = true
-    }else if (sProf == 'M'){
-        generoProf = 'Professor'
-        status = true
-    }else{
-        console.log('Não foi colocado F e nem M no campo mo campo do Professor')
-        status = false
-    }
-
-    if(media >= 70){
-        statusAluno = `APROVAD${generoAluno}`
-        exame = 'Não foi nessecario fazer o exame'
-        exameFinal = 'Não foi nessecario fazer o exame'
-        status = true
-    }else if(69 <= media && media >= 50){
-        exame = Exercicios.exameRecupera(1)
-        exameFinal = (exame + media) / 2
-        validar1Dado(exameFinal)
-        if (exameFinal >= 60){
-            statusAluno = `APROVAD${generoAluno}`
-        }else{
-            statusAluno = `REPROVAD${generoAluno}`
-        }
-        status = true
-    }else if(media <= 50){
-        statusAluno = `REPROVAD${generoAluno}`
-        exame = 'Não foi feito o exame, pela nota muito baixa'
-        exameFinal = 'Não foi feito o exame, pela nota muito baixa'
-        status = true
-    }else{
-        statusAluno = 'O correu um erro tente colocar as notas denovo'
-        exameFinal = 'O correu um erro tente colocar as notas denovo'
-        exame = 'O correu um erro tente colocar as notas denovo'
-        status = false
-    }
-
-    console.log(`           
-    ${generoAluno} alun${generoAluno.toLowerCase()} ${nAluno} foi ${statusAluno} na disciplina ${nDiciplina}.
-    Curso: ${nCurso}
-    ${generoProf}: ${nProf}
-    Notas d${generoAluno.toLowerCase()} alun${generoAluno.toLowerCase()}: ${nota1}, ${nota2}, ${nota3}, ${nota4}, Nota do Exame: ${exame}
-    Média Final: ${media}
-    Média final do Exame: ${exameFinal}`
-    )
+    boletim(nAluno, generoAluno, nProf, generoProf, nDiciplina, nCurso, nota1, nota2, nota3, nota4, media, exame, exameFinal, statusDoAluno)
 }
 
 
-function calcularNota(notaP, notaS, notaT, notaQ){
+
+function verificarNota(mediaTotal, generoDoAluno) {
+    let media = mediaTotal
+    let generoAluno = generoDoAluno
+    let statusAluno = false
+    
+    if (media >= 70) {
+        statusAluno = `APROVAD${generoAluno}`      
+    } else if (media >= 50 && media < 70) {
+        statusAluno = 'RECUPERAÇÃO'
+    } else if (media < 50) {
+        statusAluno = `REPROVAD${generoAluno}`     
+    } else {
+        statusAluno = '--Ocorreu um erro, tente colocar as notas novamente--'
+    }
+
+    return statusAluno
+}
+
+function verificarGenero(generoEscolhido) {
+    let genero = generoEscolhido;
+    
+    if (genero == 'F') {
+        return 'A';
+    } else if (genero == 'M') {
+        return 'O';
+    } else {
+        console.log('Erro: Gênero inválido, use F ou M');
+        return false;
+    }
+}
+function boletim(nomeAluno, letraAluno, nomeProf, letraProf, diciplina, curso, notaP, notaS, notaT, notaQ, mediaFeita, exameFeito, exameFinal, status){
+
+    let nAluno = nomeAluno
+    let nProf = nomeProf
+    let nDiciplina = diciplina
+    let nCurso = curso
     let nota1 = notaP
     let nota2 = notaS
     let nota3 = notaT
     let nota4 = notaQ
+
+    let media = mediaFeita
+    let exame = exameFeito
+    let exameF = exameFinal
+
+    let statusAluno = status
+
+    let GAlunoMin = (letraAluno.toLowerCase())
+    let ProfGenero = letraProf
+
+    console.log(`           
+    ${letraAluno} alun${GAlunoMin} ${nAluno} foi ${statusAluno} na disciplina ${nDiciplina}.
+    Curso: ${nCurso}
+    ${ProfGenero}: ${nProf}
+    Notas d${GAlunoMin} alun${GAlunoMin}: ${nota1}, ${nota2}, ${nota3}, ${nota4}, Nota do Exame: ${exame}
+    Média Final: ${media}
+    Média final do Exame: ${exameF}`
+    )
+}
+
+function calcularNota(notaP, notaS, notaT, notaQ){
+    let nota1 = Number(notaP)
+    let nota2 = Number(notaS)
+    let nota3 = Number(notaT)
+    let nota4 = Number(notaQ)
     let media = false
     if(
         validarDados(nota1, nota2) ||
@@ -219,7 +229,7 @@ function fatorial(numero){
             console.log(nunfatorial)
         }
     }
-    
+    return status 
 }
 
 //Exercício 05
@@ -237,33 +247,40 @@ function geraNumeros(numeroInicial, numeroFinal, escolhaPergunta){
                     numeroI++
                     numeroF--
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }else{
                     gerarListaNumeros(numeroI, numeroF)
                     numeroI++
                     numeroF--
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }                
             }else if(escolha == 2){
                 if(numeroI % 2 == 0){
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }else{
                     numeroI++
                     numeroF--
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }
             }else if(escolha == 3){
                 if(numeroI % 2 == 0){
                     numeroI++
                     numeroF--
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }else{
                     gerarListaNumeros(numeroI, numeroF)
+                    status = true
                 }
             }else{
                 
             }
         }
     }
+    return status
 }
 
 function gerarListaNumeros(numeroInicial, numeroFinal){
@@ -367,8 +384,18 @@ function validar1Dado(numeroP){
 
 module.exports = {
     IMC,
+    calcularIMC,
+
     GerenciarNota,
+    verificarNota,
+    verificarGenero,
+    calcularNota,
+    boletim,
+
     CriarTabuadas,
+
     fatorial,
-    geraNumeros
+
+    geraNumeros,
+    validar1Dado
 }
