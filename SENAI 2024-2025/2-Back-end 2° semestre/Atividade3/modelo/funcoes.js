@@ -52,44 +52,6 @@ function calcularIMC(valorIMC){
 
 
 //Exercício 02
-function GerenciarNota(nomeAluno, sexoAluno, nomeProf, sexoProf, nomeCurso, nomeDiciplina, notaP, notaS, notaT, notaQ){
-    let nAluno = nomeAluno
-    let sAluno = sexoAluno
-    let nProf = nomeProf
-    let sProf = sexoProf
-    let nCurso = nomeCurso
-    let nDiciplina = nomeDiciplina
-    let nota1 = notaP
-    let nota2 = notaS
-    let nota3 = notaT
-    let nota4 = notaQ
-    
-    let exame = 'Não foi nescessario fazer'
-    let exameFinal = 'Não foi nescessario fazer'
-
-    let status = false
-
-    if(!(validarTexto(nAluno, sAluno)) ||
-        !(validarTexto(nProf, sProf)) ||
-        !(validarTexto(nCurso, nDiciplina)) ||
-        !(validarDados(nota1, nota2))||
-        !(validarDados(nota3, nota4))
-    ){
-        console.log(`       **********ERROS NAS VALIDAÇÕES**********
-        Validação nome do Aluno e Sexo: ${validarTexto(nAluno, sAluno)}
-        Validação nome do Professor e Sexo: ${validarTexto(nProf, sProf)}
-        Validação nome do Curso e da diciplina: ${validarTexto(nCurso, nDiciplina)}
-        Validação nota 1 e 2: ${validarDados(nota1, nota2)}
-        Validação nota 3 e 4: ${validarDados(nota3, nota4)}
-        
-        **********FIM DA MENSAGEM DE ERROS NAS VALIDAÇÕES**********`)
-    }
-    let media = (calcularNota(nota1, nota2, nota3, nota4))
-
-
-    boletim(nAluno, generoAluno, nProf, generoProf, nDiciplina, nCurso, nota1, nota2, nota3, nota4, media, exame, exameFinal, statusDoAluno)
-}
-
 
 
 function verificarNota(mediaTotal, generoDoAluno) {
@@ -141,6 +103,21 @@ function boletim(nomeAluno, letraAluno, nomeProf, letraProf, diciplina, curso, n
 
     let GAlunoMin = (letraAluno.toLowerCase())
     let ProfGenero = letraProf
+    if(!(validarTexto(nAluno, GAlunoMin)) ||
+        !(validarTexto(nProf, ProfGenero)) ||
+        !(validarTexto(nCurso, nDiciplina)) ||
+        !(validarDados(nota1, nota2))||
+        !(validarDados(nota3, nota4))
+    ){
+        console.log(`       **********ERROS NAS VALIDAÇÕES**********
+        Validação nome do Aluno e Sexo: ${validarTexto(nAluno, sAluno)}
+        Validação nome do Professor e Sexo: ${validarTexto(nProf, sProf)}
+        Validação nome do Curso e da diciplina: ${validarTexto(nCurso, nDiciplina)}
+        Validação nota 1 e 2: ${validarDados(nota1, nota2)}
+        Validação nota 3 e 4: ${validarDados(nota3, nota4)}
+        
+        **********FIM DA MENSAGEM DE ERROS NAS VALIDAÇÕES**********`)
+    }
 
     console.log(`           
     ${letraAluno} alun${GAlunoMin} ${nAluno} foi ${statusAluno} na disciplina ${nDiciplina}.

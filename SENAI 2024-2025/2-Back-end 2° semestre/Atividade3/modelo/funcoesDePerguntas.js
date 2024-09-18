@@ -46,71 +46,48 @@ function perguntasE1(escolhaPergunta){
 }
 
 // Pergunta 2
-function perguntasE2(escolhaPergunta){
-    let escolha = escolhaPergunta
-    entradaDeDados.question('Digite o nome do aluno: ', function(nAluno){
-        let nomeAluno = nAluno
-        entradaDeDados.question('Digite o nome do Professor: ', function(nProf){
-            let nomeProf = nProf
-            entradaDeDados.question('Digite o sexo do aluno: ', function(sAluno){
-                let sexoAluno = sAluno
-                entradaDeDados.question('Digite o sexo do Professor: ', function(sProf){
-                    let sexoProf = sProf
-                    entradaDeDados.question('Digite o nome do curso: ', function(nCurso){
-                        let nomeCurso = nCurso
-                        entradaDeDados.question('Digite o nome da diciplina: ', function(nDiciplina){
-                            let nomeDiciplina = nDiciplina
-                            entradaDeDados.question('Digite a nota 1: ', function(nota1){
-                                let notaP = nota1
-                                entradaDeDados.question('Digite a nota 2: ', function(nota2){
-                                    let notaS = nota2
-                                    entradaDeDados.question('Digite a nota 3: ', function(nota3){
-                                        let notaT = nota3
-                                        entradaDeDados.question('Digite a nota 4: ', async function(nota4){
-                                            let notaQ = nota4
+async function perguntasE2() {
+    let nomeAluno = await new Promise(resolve => entradaDeDados.question('Digite o nome do aluno: ', resolve))
+    let nomeProf = await new Promise(resolve => entradaDeDados.question('Digite o nome do Professor: ', resolve))
+    let sexoAluno = await new Promise(resolve => entradaDeDados.question('Digite o sexo do aluno (F/M): ', resolve))
+    let sexoProf = await new Promise(resolve => entradaDeDados.question('Digite o sexo do Professor (F/M): ', resolve))
+    let nomeCurso = await new Promise(resolve => entradaDeDados.question('Digite o nome do curso: ', resolve))
+    let nomeDisciplina = await new Promise(resolve => entradaDeDados.question('Digite o nome da disciplina: ', resolve))
+    let notaP = Number(await new Promise(resolve => entradaDeDados.question('Digite a nota 1: ', resolve)))
+    let notaS = Number(await new Promise(resolve => entradaDeDados.question('Digite a nota 2: ', resolve)))
+    let notaT = Number(await new Promise(resolve => entradaDeDados.question('Digite a nota 3: ', resolve)))
+    let notaQ = Number(await new Promise(resolve => entradaDeDados.question('Digite a nota 4: ', resolve)))
 
+    let media = missao3.calcularNota(notaP, notaS, notaT, notaQ)
+    let exameR = 'Não foi necessário fazer exame'
+    let exameFinal = 'Não foi necessário fazer'
+    
+    let generoAluno = missao3.verificarGenero(sexoAluno)
+    let statusDoAluno = missao3.verificarNota(media, generoAluno)
 
-                                            let media = missao3.calcularNota(notaP, notaS, notaT, notaQ)
-                                            
-                                            let exameR = 'Não foi necessario fazer exame'
-                                            let exameFinal = 'Não foi nescessario fazer'
+    if (statusDoAluno == 'RECUPERAÇÃO') {
+        exameR = Number(await new Promise(resolve => entradaDeDados.question('Qual foi a nota do exame: ', resolve)))
+        if (!(exameR >= 0 && exameR <= 100)) {
+            console.log('Erro: a nota do exame deve estar entre 0 e 100.')
+        } else {
+            exameFinal = (exameR + media) / 2
+        }
+    }
+    if (typeof exameFinal === 'number'&& exameFinal >= 60){
+        statusDoAluno === `APROVAD${generoAluno}`
+    }else if(typeof exameFinal === 'number'&& exameFinal < 60){
+        statusDoAluno = `REPROVAD${generoAluno}` 
+    }
 
-                                            let generoAluno = (missao3.verificarGenero(sexoAluno))
-                                            let statusDoAluno = missao3.verificarNota(media, generoAluno)
-
-                                            if (statusDoAluno == 'RECUPERAÇÃO'){
-                                                await new entradaDeDados.question('Qual foi a nota do exame: ', function(notaExame){
-                                                    exameR = Number(notaExame)
-                                                    missao3.validar1Dado(exameR)
-                                                    if(!(exameR >= 0 && exameR <= 100)){
-                                                        console.log('ERROR: a nota do exame deve ir de 0 a 100')
-                                                    }
-                                                })
-                                                exameFinal = (exameR + media) / 2
-                                            }
-
-                                            let generoProf = (missao3.verificarGenero(sexoProf))
-
-                                            if(generoProf == 'A'){
-                                                generoProf = 'Professora'
-                                            }else if(generoProf == 'O'){
-                                                generoProf = 'Professor'
-                                            }
-                                            missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDiciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno)
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    })
+    let generoProf = missao3.verificarGenero(sexoProf)
+    if (generoProf == 'A'){
+        generoProf = 'Professora'
+    }else if (generoProf == 'O'){
+        generoProf = 'Professor'
+    }
+    
+    missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDisciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno);
 }
-
-// por algum motivo duplicava as letras entodas as funções
-
 
 
 
