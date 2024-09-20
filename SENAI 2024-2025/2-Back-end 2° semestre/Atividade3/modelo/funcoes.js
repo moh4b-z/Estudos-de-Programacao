@@ -8,8 +8,6 @@
  *********************************************************************************/
 
 
-var Exercicios = require('./funcoesDePerguntas')
-
 //Exercício 01
 function IMC(altura, peso){
     let alturaP = Number(String(altura).replace(',','.'))
@@ -307,7 +305,7 @@ function validarTexto(textoP, textoS){
     let status = true
 
     if(texto1 == '' || texto2 == ''){
-        console.log('É necessario todos os campos preencidos')
+        console.log('É necessario todos os campos serem preencidos')
         status = false
     }else if(typeof texto1 === 'string' && isNaN(texto1) || 
     typeof texto2 === 'string' && isNaN(texto2)){
@@ -330,10 +328,10 @@ function validarDadosPI(numeroP, numeroS){
     let status = true
 
     if(numero1 == '' || numero2 == ''){
-        console.log('É necessario todos os campos preencidos')
+        console.log('É necessario que todos os campos preencidos')
         status = false
     }else if(isNaN(numero1) || isNaN(numero2)){
-        console.log('É necessario todos os campos serem numeros')
+        console.log('É necessario que todos os campos serem numeros')
         status = false
     }else if(numero1 > numero2){
         console.log('Valor inicial é maior que o final, não pode')
@@ -346,7 +344,7 @@ function validar1Dado(numeroP){
     let status = true
 
     if(numero1 == ''){
-        console.log('É necessario o campo se preencido')
+        console.log('É necessario o campo seja preencido')
         status = false
     }else if(isNaN(numero1)){
         console.log(`   É necessario o campo ser um numero,
@@ -363,7 +361,6 @@ module.exports = {
     IMC,
     calcularIMC,
 
-    GerenciarNota,
     verificarNota,
     verificarGenero,
     calcularNota,

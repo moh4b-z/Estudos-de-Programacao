@@ -46,6 +46,15 @@ function perguntasE1(escolhaPergunta){
 }
 
 // Pergunta 2
+/* 
+sinto que compliquei muito mais do que o necessario
+ovideo que assitir para fazer: https://www.youtube.com/watch?v=q28lfkBd9F4
+new Promise(resolve => {qualque coisa}): cria uma nova promessa que encapsula a chamada assíncrona de entradaDeDados.question.
+
+resolve: Função chamada quando a operação assíncrona é bem-sucedida.
+reject: Função chamada quando a operação falha.
+resolve => entradaDeDados.question(...): Essa parte é uma arrow function.
+*/
 async function perguntasE2() {
     let nomeAluno = await new Promise(resolve => entradaDeDados.question('Digite o nome do aluno: ', resolve))
     let nomeProf = await new Promise(resolve => entradaDeDados.question('Digite o nome do Professor: ', resolve))
@@ -87,6 +96,141 @@ async function perguntasE2() {
     }
     
     missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDisciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno);
+}
+
+
+// Pergunta 2.1
+function perguntasE2_1(escolhaPergunta) {
+    let escolha = escolhaPergunta
+    entradaDeDados.question('Digite o nome do aluno: ', function(nAluno) {
+        let nomeAluno = nAluno
+        entradaDeDados.question('Digite o nome do Professor: ', function(nProf) {
+            let nomeProf = nProf
+            entradaDeDados.question('Digite o sexo do aluno: ', function(sAluno) {
+                let sexoAluno = sAluno
+                entradaDeDados.question('Digite o sexo do Professor: ', function(sProf) {
+                    let sexoProf = sProf
+                    entradaDeDados.question('Digite o nome do curso: ', function(nCurso) {
+                        let nomeCurso = nCurso
+                        entradaDeDados.question('Digite o nome da disciplina: ', function(nDiciplina) {
+                            let nomeDisciplina = nDiciplina
+                            entradaDeDados.question('Digite a nota 1: ', function(nota1) {
+                                let notaP = nota1
+                                entradaDeDados.question('Digite a nota 2: ', function(nota2) {
+                                    let notaS = nota2
+                                    entradaDeDados.question('Digite a nota 3: ', function(nota3) {
+                                        let notaT = nota3
+                                        entradaDeDados.question('Digite a nota 4: ', function(nota4) {
+                                            let notaQ = nota4
+
+                                            let media = missao3.calcularNota(notaP, notaS, notaT, notaQ)
+                                            let exameR = 'Não foi necessário fazer exame'
+                                            let exameFinal = 'Não foi necessário fazer'
+                                            
+                                            let generoAluno = missao3.verificarGenero(sexoAluno)
+                                            let statusDoAluno = missao3.verificarNota(media, generoAluno)
+
+                                            
+                                            if (statusDoAluno == 'RECUPERAÇÃO') {
+                                                entradaDeDados.question('Digite a nota do exame: ', function(valorDoExame) {
+                                                    exameR = valorDoExame
+                                                    if (!(exameR >= 0 && exameR <= 100)) {
+                                                        console.log('Erro: a nota do exame deve estar entre 0 e 100.')
+                                                    } else {
+                                                        exameFinal = (exameR + media) / 2
+                                                    }
+                                                    if (exameFinal >= 60) {
+                                                        statusDoAluno = `APROVAD${generoAluno}`
+                                                    } else {
+                                                        statusDoAluno = `REPROVAD${generoAluno}`
+                                                    }
+
+                                                    
+                                                    let generoProf = missao3.verificarGenero(sexoProf)
+                                                    generoProf = (generoProf == 'A') ? 'Professora' : 'Professor'
+
+                                                    
+                                                    missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDisciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno)
+                                                })
+                                            } else {
+                                                
+                                                let generoProf = missao3.verificarGenero(sexoProf)
+                                                generoProf = (generoProf == 'A') ? 'Professora' : 'Professor'
+
+                                              
+                                                missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDisciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno)
+                                            }
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+}
+
+
+
+// Pergunta 2.2
+function perguntasE2_2(escolhaPergunta) {
+    let escolha = escolhaPergunta
+    entradaDeDados.question('Digite o nome do aluno: ', function(nAluno) {
+        let nomeAluno = nAluno
+        entradaDeDados.question('Digite o nome do Professor: ', function(nProf) {
+            let nomeProf = nProf
+            entradaDeDados.question('Digite o sexo do aluno: ', function(sAluno) {
+                let sexoAluno = sAluno
+                entradaDeDados.question('Digite o sexo do Professor: ', function(sProf) {
+                    let sexoProf = sProf
+                    entradaDeDados.question('Digite o nome do curso: ', function(nCurso) {
+                        let nomeCurso = nCurso
+                        entradaDeDados.question('Digite o nome da disciplina: ', function(nDiciplina) {
+                            let nomeDisciplina = nDiciplina
+                            entradaDeDados.question('Digite a nota 1: ', function(nota1) {
+                                let notaP = nota1
+                                entradaDeDados.question('Digite a nota 2: ', function(nota2) {
+                                    let notaS = nota2
+                                    entradaDeDados.question('Digite a nota 3: ', function(nota3) {
+                                        let notaT = nota3
+                                        entradaDeDados.question('Digite a nota 4: ', function(nota4) {
+                                            let notaQ = nota4
+
+                                            let media = missao3.calcularNota(notaP, notaS, notaT, notaQ)
+                                            if (media){}
+                                            entradaDeDados.question('Digite a nota do exame: ', function(valorDoExame) {
+                                                exameR = valorDoExame
+                                                if (!(exameR >= 0 && exameR <= 100)) {
+                                                    console.log('Erro: a nota do exame deve estar entre 0 e 100.')
+                                                } else {
+                                                    exameFinal = (exameR + media) / 2
+                                                }
+                                                if (exameFinal >= 60) {
+                                                    statusDoAluno = `APROVAD${generoAluno}`
+                                                } else {
+                                                    statusDoAluno = `REPROVAD${generoAluno}`
+                                                }
+
+                                                
+                                                let generoProf = missao3.verificarGenero(sexoProf)
+                                                generoProf = (generoProf == 'A') ? 'Professora' : 'Professor'
+
+                                                
+                                                missao3.boletim(nomeAluno, generoAluno, nomeProf, generoProf, nomeDisciplina, nomeCurso, notaP, notaS, notaT, notaQ, media, exameR, exameFinal, statusDoAluno)
+                                            })
+                                           
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
 }
 
 
@@ -153,4 +297,6 @@ module.exports = {
     perguntasE3,
     perguntasE4,
     perguntasE5,
+    perguntasE2_1
+
 }
