@@ -108,8 +108,8 @@ function boletim(nomeAluno, letraAluno, nomeProf, letraProf, diciplina, curso, n
         !(validarDados(nota3, nota4))
     ){
         console.log(`       **********ERROS NAS VALIDAÇÕES**********
-        Validação nome do Aluno e Sexo: ${validarTexto(nAluno, sAluno)}
-        Validação nome do Professor e Sexo: ${validarTexto(nProf, sProf)}
+        Validação nome do Aluno e Sexo: ${validarTexto(nAluno, GAlunoMin)}
+        Validação nome do Professor e Sexo: ${validarTexto(nProf, ProfGenero)}
         Validação nome do Curso e da diciplina: ${validarTexto(nCurso, nDiciplina)}
         Validação nota 1 e 2: ${validarDados(nota1, nota2)}
         Validação nota 3 e 4: ${validarDados(nota3, nota4)}
@@ -307,8 +307,17 @@ function validarTexto(textoP, textoS){
     if(texto1 == '' || texto2 == ''){
         console.log('É necessario todos os campos serem preencidos')
         status = false
-    }else if(typeof texto1 === 'string' && isNaN(texto1) || 
-    typeof texto2 === 'string' && isNaN(texto2)){
+    }else if(typeof texto1 !== 'string' || typeof texto2 !== 'string'){
+        console.log(`   É necessario que todos os campos não sejam numeros, 
+        O tipos das entradas:
+        texto1: ${typeof texto1}
+        texto2: ${typeof texto2}
+        As entradas:
+        texto1: ${texto1}
+        texto2: ${texto2}
+        `)
+        status = false
+    }else if( !(isNaN(texto1)) || !(isNaN(texto2))){
         console.log(`   É necessario que todos os campos não sejam numeros, 
         O tipos das entradas:
         texto1: ${typeof texto1}
