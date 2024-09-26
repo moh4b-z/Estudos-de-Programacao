@@ -12,21 +12,22 @@ CREATE TABLE tipo_ramo (
 	ramo NOT NULL VARCHAR(100)
 );
 
+CREATE TABLE status_vagas (
+    id_status INT AUTO_INCREMENT PRIMARY KEY,
+	status_empresa NOT NULL VARCHAR(20) -- Status (ativa/inativa)
+);
+
+
 CREATE TABLE empresas (
     cnpj VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY,  
-    nome_empresa VARCHAR(150) NOT NULL, 
-    ramo_atividade VARCHAR(100),        
+    nome_empresa VARCHAR(150) NOT NULL,        
     telefone VARCHAR(20),                 
-    email VARCHAR(100),                    
-    endereco_rua VARCHAR(150),            
-    endereco_numero VARCHAR(10),     
-    endereco_complemento VARCHAR(50),     
-    bairro VARCHAR(50),                
-    cidade VARCHAR(50),                
-    estado VARCHAR(2),                  
-    cep VARCHAR(10),                     
-    site_empresa VARCHAR(150),          
-    status_empresa VARCHAR(10),            -- Status (ativa/inativa)
+    email VARCHAR(150) NOT NULL,                    
+    endereco VARCHAR(200),                              
+    cep VARCHAR(10) NOT NULL,                     
+    site_empresa VARCHAR(200),
+	id_ramo INT NOT NULL,
+	foreign key (id_ramo) references tipo_ramo(id_ramo)
 );
 
 
@@ -55,7 +56,7 @@ INSERT INTO tipo_escolaridade (escolaridade)
 INSERT INTO tipo_contratacao (contratacao)
 	VALUES 
 	('Temporário'), --id = 1
-	('Efetivo'), --id = 2
+	('CLT'), --id = 2
 	('PJ'), --id = 3
 ;
 
