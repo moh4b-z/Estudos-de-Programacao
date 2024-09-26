@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #BC7F55;
+    padding: 2% 4%;
+}
+
+main {
+    background: #ffff;
+    margin: 1.5vw;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    padding: 1%;
+}
+
+.Ingredientes {
+    justify-content: center;
+
+}
+
+.centro{
+    justify-content: center;
+    width: 80px;
+    right: 80px;
+
+}
+
+.cranio{
+    display: flex;
+    justify-content: center;
+
+}
+
+.in1 {
+    display: flex;
+    margin: 8px;
+}
+.imgIN{
+    margin-right: 8px;
+}
+
+p{
+    padding: 8px;
+    display: flex;
+}

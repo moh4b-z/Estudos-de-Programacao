@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background: #3e0682;
+  padding: 2%;
+}
+img {
+    width: 100%;
+}
+
+p, h2, h1 {
+    color: #ffffff;
+}
+
+
+table {
+    padding: 1%;
+}
+
+.Logotipo {
+    width: 18%;
+    padding: 10px;
+}
+
+.Descricao {
+    width: 40%;
+    padding: 10px;
+}
+
+p {
+    width: 90%;
+}
+
+.Netflix, .Microsoft, .Disney, .Mcdonald {
+    border: 1px solid #ffffff;
+}
+
+.Empresa, .Logotipo, .Descricao, .Link {
+    padding: 2%;
+    margin: 2%;
+    border-bottom: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+}
+
+
+a {
+    font-size: 40px;
+    color: #fffbab;
+}
