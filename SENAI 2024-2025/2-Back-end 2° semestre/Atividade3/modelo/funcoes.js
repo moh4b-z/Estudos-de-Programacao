@@ -26,24 +26,26 @@ function calcularIMC(valorIMC){
     let imc = valorIMC
     let statusIMC = false
 
-    if(validar1Dado(imc)){if(imc < 18.5){
+    if(validar1Dado(imc)){
+        if(imc < 18.5){
         statusIMC = ('Abaixo do peso')
 
-    }else if(18.5 <= imc && imc <= 24.9){
-        statusIMC = ('Peso Normal')
+        }else if(18.5 <= imc && imc <= 24.9){
+            statusIMC = ('Peso Normal')
 
-    }else if(25 <= imc && imc <= 29.9){
-        statusIMC = ('Acima do peso')
+        }else if(25 <= imc && imc <= 29.9){
+            statusIMC = ('Acima do peso')
 
-    }else if(30 <= imc && imc <= 34.9){
-        statusIMC = ('Obesidade I')
+        }else if(30 <= imc && imc <= 34.9){
+            statusIMC = ('Obesidade I')
 
-    }else if(35 <= imc && imc <= 39.9){
-        statusIMC = ('Obesidade II')
+        }else if(35 <= imc && imc <= 39.9){
+            statusIMC = ('Obesidade II')
 
-    }else if(imc >= 40){
-        statusIMC = ('Obesidade III')
-    }}
+        }else if(imc >= 40){
+            statusIMC = ('Obesidade III')
+        }
+    }
 
     return statusIMC
 }
@@ -251,7 +253,7 @@ function geraNumeros(numeroInicial, numeroFinal, escolhaPergunta){
                     status = true
                 }
             }else{
-                
+                console.log('ERRO: escolha entre 1 a 3')
             }
         }
     }

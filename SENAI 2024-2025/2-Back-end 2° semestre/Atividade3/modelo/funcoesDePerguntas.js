@@ -27,7 +27,7 @@ function escolha(pontape){
             }else if(escolha == 5){
                 perguntasE5(escolha)
             }else{
-                
+                console.log('Erro: você não escolheu nenhuma da opções que são de 1 a 5')
             }
         })
 }
@@ -146,7 +146,7 @@ function perguntasE5(escolhaPergunta){
                 }else if(escolha == 3){
                     missao3.geraNumeros(numeroI, numeroF, escolha)
                 }else{
-
+                    console.log('ERRO coloque um numero de 1 a 3')
                 }
             })
         })
