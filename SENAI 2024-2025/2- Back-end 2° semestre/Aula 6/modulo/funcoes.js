@@ -189,6 +189,6 @@ function cadastroProduto(){
                                             listaCategoria[4].nome]
                             }
                         ]
-    console.log(produto)
+    console.log(listaDeProdutos[0].marca.nome)
 }
 cadastroProduto()
