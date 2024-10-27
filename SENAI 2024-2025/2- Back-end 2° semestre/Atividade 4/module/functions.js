@@ -86,4 +86,4 @@ function getCidades(siglaDoEstado){
     return objetoRetorno
 }
 
-// console.log(getCapitalPais())
+console.log(getCapitalPais())
