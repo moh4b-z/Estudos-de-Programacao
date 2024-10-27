@@ -19,11 +19,15 @@
 
 body{
     background-color: var(--primary-dark-color);
+    position: relative;
     padding: 5px;
-    width: 100%;
+    width: 100vw;
+    height: auto;
     display: flex;
     flex-direction: column;
     font-family: "Righteous", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 h1{
     color: var(--primary-contrast-color);
