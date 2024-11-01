@@ -73,10 +73,8 @@ input{
     width: 20%;
 }
 .user div{
-    
     border-radius: 50%;
-    border: 2px solid #000000;
-    
+    border: 2px solid #000000; 
 }
 .user div ion-icon{
     width: 45px;
@@ -118,7 +116,7 @@ input{
     height: 100%;
     width: 100%;
     display: flex;
-    background-color: brown;
+    background-color: red;
 }
 .black{
     background-color: black;
@@ -149,4 +147,141 @@ h1{
     color: white;
     font-size: 350px;
     line-height: 0.7;
+}
+
+
+@media (max-width:960px) {
+    header{
+        height: 8%;
+        border-bottom: 2px solid #000000;
+    }
+    .menu{
+        width: calc(100% - 8vh);
+    }
+    
+    .user{
+        width: 10%;
+    }
+    .menu ul{
+        width: 75%;
+        padding: 8px;
+        font-size: 16px;
+    }
+    .box{
+        display: flex;
+        border-bottom: 2px solid #000000;
+        width: 20%;
+    }
+
+    .user div ion-icon{
+        width: 35px;
+        height: 30px;
+    }
+
+    .logo{
+        width: 8vh;
+        height: 8vh;
+        font-size: 16px;
+    }
+    .logo h2{
+        top: 30px;
+    }
+    .linha{
+        left: 8vh;
+        width: 2px;
+    }
+
+    h3{
+        display: none;
+    }
+
+    main{
+        height: 92%;
+    }
+
+    .esquerda{
+        width: 8vh;
+    }
+    .esquerda h2{
+        transform: rotate(270deg) translate(-40%, -500%);
+    }
+
+        
+    .direita{
+        padding-top: 3%;
+    }
+    .black{
+        width: 100%;
+    }
+    .black img{
+        width: 80%;
+        position: absolute;
+        top: 45%;
+    }
+    .red{
+        display: none;
+    }
+    h1{
+        top: 8%;
+        left: 10%;
+        font-size: 160px;
+    }
+    h1 span{
+        word-break: break-word;
+    }
+}
+
+@media (max-width:470px) {
+
+    .menu{
+        padding-inline: 20px;
+    }
+    
+    .user{
+        width: 10%;
+    }
+    .menu ul{
+        display: none;
+    }
+    .box{
+        display: flex;
+        width: 90%;
+    }
+
+    .user div ion-icon{
+        width: 35px;
+        height: 30px;
+    }
+
+    .logo{
+        font-size: 10px;
+    }
+    .logo h2{
+        top: 20px;
+        left: 2px;
+    }
+
+    .esquerda h2{
+        transform: rotate(270deg) translate(-40%, -560%);
+    }
+
+    .black{
+        display: none;
+    }
+    .red{
+        display: block;
+        width: 100%;
+        background-position: -150px center;
+        margin-top: 70px;
+        transform: scaleX(-1); 
+    }
+
+    h1{
+        color: black;
+        font-size: 50px;
+        z-index: 10;
+    }
+    h1 span{
+        word-break: normal;
+    }
 }
