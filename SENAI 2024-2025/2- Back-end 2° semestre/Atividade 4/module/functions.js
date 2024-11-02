@@ -86,4 +86,13 @@ function getCidades(siglaDoEstado){
     return objetoRetorno
 }
 
-console.log(getCapitalPais())
+// console.log(getCapitalPais())
+
+module.exports = {
+    getListaDeEstados,
+    getDadosEstado,
+    getCapitalEstado,
+    getEstadosRegiao,
+    getCapitalPais,
+    getCidades
+}
