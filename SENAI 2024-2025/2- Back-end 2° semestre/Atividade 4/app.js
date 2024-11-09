@@ -24,6 +24,8 @@ const bodyParser = require('body-parser')
 //Inicializa o express através do objeto do app
 const app = express()
 
+const estadosCidades = require('./module/functions.js')
+
 
 // request - dados que chhega na API
 // response - dados que saem da API
@@ -48,12 +50,91 @@ app.get('/v1/estados-cidades/lista-esados/siglas', cors(), async function(reques
 
     let dadosEstados = estadosCidades.getListaDeEstados()
 
-    response.status(200)
-    response.json(dadosEstados)
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
 })
 
 
-// http://localhost:8080  ...
+app.get('/v1/estados-cidades/estado/:sigla', cors(), async function(request, response){
+
+    let uf = request.params.sigla
+
+    let dadosEstados = estadosCidades.getDadosEstado(uf)
+
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+
+})
+
+
+app.get('/v1/estados-cidades/capital-estado', cors(), async function(request, response){
+
+    let uf = request.query.sigla
+
+    let dadosEstados = estadosCidades.getCapitalEstado(uf)
+
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+})
+
+app.get('/v1/estados-cidades/regiao-estado', cors(), async function(request, response){
+
+    let uf = request.query.regiao
+
+    let dadosEstados = estadosCidades.getEstadosRegiao(uf)
+
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+})
+
+app.get('/v1/estados-cidades/lista-capital/pais', cors(), async function(request, response){
+
+    let dadosEstados = estadosCidades.getCapitalPais()
+
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+})
+
+app.get('/v1/estados-cidades/cidades-estado', cors(), async function(request, response){
+
+    let uf = request.query.sigla
+
+    let dadosEstados = estadosCidades.getCidades(uf)
+
+    if(dadosEstados){
+        response.status(200)
+        response.json(dadosEstados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+})
+
 
 app.listen('8080', function(){
     console.log('API aguardando requisição ...')

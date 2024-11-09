@@ -4,25 +4,29 @@ const listaDeEstados = arr.listaDeEstados.estados
 function getListaDeEstados(){
     let objetoRetorno = {uf: [], quantidade: 0}
     let quantidade = 0
-
+    
     listaDeEstados.forEach(function(item){
         objetoRetorno.uf.push(item.sigla)
         quantidade++
     })
     objetoRetorno.quantidade = quantidade
-    return objetoRetorno
+
+    return objetoRetorno.quantidade > 1 ? objetoRetorno : false
 }
 function getDadosEstado(siglaDoEstado){
     let sigla = siglaDoEstado
     let objetoRetorno = {uf: sigla, descricao: '', capital: '', regiao: ''}
 
     let objeto = listaDeEstados.find(objeto => objeto.sigla === sigla)
+    if(objeto){
+        objetoRetorno.descricao = objeto.nome
+        objetoRetorno.capital = objeto.capital
+        objetoRetorno.regiao = objeto.regiao
+        return objetoRetorno
+    }else{
+        return false
+    }
 
-    objetoRetorno.descricao = objeto.nome
-    objetoRetorno.capital = objeto.capital
-    objetoRetorno.regiao = objeto.regiao
-
-    return objetoRetorno
 }
 function getCapitalEstado(siglaDoEstado){
     let sigla = siglaDoEstado
@@ -31,10 +35,13 @@ function getCapitalEstado(siglaDoEstado){
 
     let objeto = listaDeEstados.find(objeto => objeto.sigla === sigla)
 
-    objetoRetorno.descricao = objeto.nome
-    objetoRetorno.capital = objeto.capital
-
-    return objetoRetorno
+    if(objeto){
+        objetoRetorno.descricao = objeto.nome
+        objetoRetorno.capital = objeto.capital
+        return objetoRetorno
+    }else{
+        return false
+    }
 }
 function getEstadosRegiao(regiaoDoEstado){
     let regiao = regiaoDoEstado
@@ -46,7 +53,7 @@ function getEstadosRegiao(regiaoDoEstado){
             objetoRetorno.estados.push(estado)
         }
     })
-    return objetoRetorno
+    return objetoRetorno.estados.length > 0 ? objetoRetorno : false
 }
 function getCapitalPais(){
     let objetoRetorno = {capitais: []}
@@ -65,7 +72,7 @@ function getCapitalPais(){
             objetoRetorno.capitais.push(objeto)
         }
     })
-    return objetoRetorno
+    return objetoRetorno.capitais.length > 0 ? objetoRetorno : false
 }
 function getCidades(siglaDoEstado){
     let sigla = siglaDoEstado
@@ -83,10 +90,11 @@ function getCidades(siglaDoEstado){
     })
 
     objetoRetorno.quantidade_cidades = quantidade
-    return objetoRetorno
+    return objetoRetorno.cidades.length > 0 ? objetoRetorno : false
 }
 
 // console.log(getCapitalPais())
+// console.log(getListaDeEstados(''))
 
 module.exports = {
     getListaDeEstados,
