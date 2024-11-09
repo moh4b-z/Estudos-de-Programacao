@@ -1,4 +1,4 @@
-var arr = require('./estados_cidades')
+var arr = require('./estados_cidades.js')
 const listaDeEstados = arr.listaDeEstados.estados
 
 function getListaDeEstados(){
