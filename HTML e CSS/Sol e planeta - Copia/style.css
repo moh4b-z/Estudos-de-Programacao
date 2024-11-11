@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background-color: #05082d;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:root{
+    --scale-system: 12px;
+    --space-animation-time: 10s;
+    --star-diameter: 30em;
+    --element-in-orbit-diameter: 5em;
+    --star-light: 
+        0 0 5em 0 #fed84c80,
+        0 0 20em 4em #e8a55233,
+        0 0 55em 8em #ff4d4d1a
+    ;
+    --star-color: #ffffff;
+    --orbit-shadow-color:#262938;
+    --element-in-orbit-color: #ffedd1;
+    --shadow-caused-star1: #c6836466;
+    --shadow-caused-star2: #412104b5;
+    --shadow-caused-star3: #845a4682;
+}
+
+.spaceSystem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--scale-system);
+    transform: rotate(45deg);
+    border-radius: 50%;
+}
+
+.star{
+    width: var(--star-diameter);
+    height: var(--star-diameter);
+    background: var(--star-color);
+    border-radius: 50%;
+    box-shadow: var(--star-light);
+    position: relative;
+}
+
+.elementInOrbit, .elementInOrbit::after{
+    content: "";
+    position: absolute;
+    width: var(--element-in-orbit-diameter);
+    height: var(--element-in-orbit-diameter);
+    border-radius: 50%;
+}
+
+.elementInOrbit{
+    background-color: var(--element-in-orbit-color);
+    box-shadow: -2em 0 5em -1em white;
+    overflow: hidden;
+    transition: 250ms;
+    left: 32em;
+    transform: rotate(0deg);
+    animation: orbit var(--space-animation-time) infinite ease-in-out;
+}
+
+.elementInOrbit::after{
+    background-color: var(--orbit-shadow-color);
+    box-shadow: 0 0 0.75em 0.95em var(--orbit-shadow-color);
+    animation: orbitShadow var(--space-animation-time) infinite ease-in-out;
+}
+
+@keyframes orbitShadow{
+    0%{
+        width: calc(var(--element-in-orbit-diameter)/2);
+        left: 0;
+    }
+    /* 40%{
+        width: var(--element-in-orbit-diameter);
+    } */
+    50%{
+        width: calc(var(--element-in-orbit-diameter));
+        left: calc(var(--element-in-orbit-diameter)/2);
+    }
+    /* 70%{
+        width: var(--element-in-orbit-diameter);
+        height: calc(var(--element-in-orbit-diameter)*1.8);
+    } */
+    75%{
+        width: 0em;
+        left: var(--element-in-orbit-diameter);
+    }
+    80%{
+        left: 0;
+        box-shadow: 0 0 0.55em 0.75em var(--orbit-shadow-color);
+    }
+    100%{
+        width: calc(var(--element-in-orbit-diameter)/2);
+        left: 0;
+    }
+}
+
+@keyframes orbit {
+    0%, 100%{
+        top: 13em;
+        left: -15em;
+        box-shadow: -2em 0 5em 0.5em var(--shadow-caused-star1);
+        z-index: 2;
+    }
+    25%{
+        box-shadow: 0 0 3em 1em var(--shadow-caused-star2);
+    }
+    48%{
+        z-index: 2;
+    }
+    50%{
+        left: 40em;
+        top: 13em;
+        z-index: -1;
+        box-shadow: 0 0 3em 1em var(--shadow-caused-star3);
+    }
+    75%{
+        box-shadow: 0 0 3em 1em black;
+    }
+    99%{
+        z-index: -1;
+    }
+}
