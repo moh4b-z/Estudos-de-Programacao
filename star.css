@@ -7,13 +7,14 @@
     --tail-width: 10em;
     --star-X-width: 3em;
     --shine-star: drop-shadow(0 0 6px #699bff);
-    --positioning-and-color-of-the-sky: linear-gradient(135deg, #00103a 0%, #3e5177 100%);
+    --positioning-and-color-of-the-sky: linear-gradient(135deg, #040a15 0%, #172689 100%);
 }
 
 .sky{
     font-size: 10px;
     position: absolute;
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     left: 0;
     top: 0;

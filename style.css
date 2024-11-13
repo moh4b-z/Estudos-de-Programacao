@@ -3,6 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+button{
+    cursor: pointer;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol, li{
+    list-style: none;
+}
+
 :root{
     --primary-light-color: #95c8e1;
     --secondary-light-color: #b5c2d2;
@@ -23,26 +38,23 @@ body{
     padding: 5px;
     width: 100vw;
     height: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     font-family: "Righteous", sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 h1{
     color: var(--primary-contrast-color);
 }
-button{
-    cursor: pointer;
-    border: none;
-}
-a{
-    text-decoration: none;
-}
+
 
 header{
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 140px;
     padding: 4px;
     align-items: center;
@@ -51,7 +63,6 @@ header{
 }
 header div{
     display: flex;
-    flex-direction: column;
     padding: 4px;
     align-items: center;
     justify-content: center;
@@ -87,156 +98,11 @@ main{
     color: var(--tree-light-color);
 }
 
-/**************************************************
-upper
-a parte superior do main
-**************************************************/
-
-.upper{
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-}
-
-
-/*********
-upperUpper
-*********/
-
-.upperUpper{
-    display: flex;
-}
-.description{
-    width: 50%;
-}
-.description h2{
-    font-size: 30px;
-    color: var(--primary-light-color);
-    filter: drop-shadow(6px 2px 4px var(--tree-dark-color));
-}
-
-
-.programmingFolder{
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-}
-
-.programmingFolderToDownload{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-.programmingFolderToDownload a{
-    color: var(--secondary-contrast-color);
-}
-.programmingFolderToDownload a:last-child{
-    padding: 2px 5px;
-    background-color: var(--tree-dark-color);
-}
-
-/*********
-upperLower
-*********/
-
-.studyMaterialCarousel{
-    display: flex;
-    padding-block: 1vh;
-}
-
-.studyMaterialCarousel a{
-    width: 12vw;
-    height: 10vh;
-    margin-inline: 1vw;
-}
-
-
-.studyMaterialContainer{
-    width: 12vw;
-    height: 10vh;
-    background-color: var(--secondary-dark-color);
-    padding: 5px;
-    border-radius: 8px;
-    border: 1px solid var(--primary-light-color);
-    transition: 0.5s;
-}
-.studyMaterialContainer:hover{
-    filter: drop-shadow(2px 2px 4px var(--tree-contrast-color));
-    transform: scale(1.01);
-}
-
-
-.studyMaterialContainer h5{
-    height: 40%;
-    font-size: 14px;
-    color: var(--secondary-light-color);
-}
-.studyMaterialContainer span{
-    height: 25%;
-    font-size: 8px;
-    color: var(--tree-contrast-color);
-}
-.studyMaterialContainer p{
-    height: 35%;
-    font-size: 12px;
-    color: var(--primary-contrast-color);
-}
-
-/**************************************************
-**************************************************/
-
-
-/**************************************************
-lower
-a parte inferio do main
-**************************************************/
-
-
-.lower{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-.lower h3{
-    color: var(--primary-light-color);
-    filter: drop-shadow(6px 2px 4px var(--tree-dark-color));
-}
-
-.listDescription{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 5px;
-}
-
-.ordering{
-    height: 100%;
-    padding: 5px 10px;
-    color: var(--tree-contrast-color);
-    background-color: transparent;
-    border: 1px solid var(--primary-light-color);
-    box-shadow: 0 0 8px var(--tree-light-color);
-}
-
-.ordering:hover{
-    background-color: var(--secondary-light-color);
-}
-
-
-/**************************************************
-**************************************************/
-
 
 footer{
     height: 30px;
     width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 50vw;
-    right: 50vw;
     padding: 4px;
-    display: flex;
     font-style: italic;
     align-items: center;
     justify-content: center;
@@ -246,9 +112,6 @@ footer{
 
 footer div{
     display: flex;
-    width: 20vw;
-    background-color: var(--primary-dark-color);
     align-items: center;
     justify-content: center;
-    border-radius: 10vw;
 }
