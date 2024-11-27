@@ -106,7 +106,28 @@ function alunosCursoDeAno(nomeCurso, anoDeComnclusao){
     return objetoRetorno
 }
 
-// console.log(alunosCursoDeAno("RDS", "2022"))
+
+function filtro(statusAlunosCursoS, nomeCurso, statusAluno, anoDeComnclusao) {
+    let statusAC = statusAlunosCursoS
+    let nCurso = nomeCurso
+    let statusA = statusAluno
+    let anoDC = anoDeComnclusao
+    let objetoRetorno = false
+
+    if (statusAC) {
+        objetoRetorno = statusCurso(statusAC)
+    } else if (nCurso && statusA && !anoDC) {
+        objetoRetorno = alunosStatusCurso(nCurso, statusA)
+    } else if (nCurso && anoDC && !statusA) {
+        objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
+    }
+    
+    return objetoRetorno
+}
+
+
+console.log(alunosCursoDeAno("DS", "2021"))
+// console.log(filtro("Cursando", "","",""))
 
 module.exports = {
     cursosLista,
@@ -115,5 +136,6 @@ module.exports = {
     alunosCurso,
     statusCurso,
     alunosStatusCurso,
-    alunosCursoDeAno
+    alunosCursoDeAno,
+    filtro
 }

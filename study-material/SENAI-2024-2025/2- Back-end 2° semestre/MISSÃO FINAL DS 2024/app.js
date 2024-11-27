@@ -88,45 +88,72 @@ app.get('/v1/lion-school/alunos/cursos/:curso', cors(), async function(request, 
     }
 })
 
+// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
+//     //?status={
+//     let uf = request.query.status
+
+//     let dados = LionSchool.statusCurso(uf)
+
+//     if(dados){
+//         response.status(200)
+//         response.json(dados)
+//     }else{
+//         response.status(404)
+//         response.json({'status': 404, 'message': "Not found"})
+//     }
+// })
+
+
+// //http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&status=Aprovado
+// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
+//     let curso = request.query.curso
+//     let status = request.query.status
+//     let dados = LionSchool.alunosStatusCurso(curso, status)
+
+//     if(dados){
+//         response.status(200)
+//         response.json(dados)
+//     }else{
+//         response.status(404)
+//         response.json({'status': 404, 'message': "Not found"})
+//     }
+// })
+
+
+// //http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&ano-conclusao=2021
+// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
+
+//     let curso = request.query.curso
+//     let aonC = request.query.ano_conclusao
+
+//     let dados = LionSchool.alunosCursoDeAno(curso, aonC)
+
+//     if(dados){
+//         response.status(200)
+//         response.json(dados)
+//     }else{
+//         response.status(404)
+//         response.json({'status': 404, 'message': "Not found"})
+//     }
+// })
+
+
+
 app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-    //?status={
-    let uf = request.query.status
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac=&nc=&sa=&adc=
+    let statusAC = request.query.sac
+    let nCurso = request.query.nc
+    let statusA = request.query.sa
+    let anoDC = request.query.adc
+    let dados = false
 
-    let dados = LionSchool.statusCurso(uf)
-
-    if(dados){
-        response.status(200)
-        response.json(dados)
-    }else{
-        response.status(404)
-        response.json({'status': 404, 'message': "Not found"})
+    if (statusAC !== undefined) {
+        objetoRetorno = statusCurso(statusAC)
+    } else if (nCurso !== undefined && statusA !== undefined && anoDC === undefined) {
+        objetoRetorno = alunosStatusCurso(nCurso, statusA)
+    } else if (nCurso !== undefined && anoDC !== undefined && statusA === undefined) {
+        objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
     }
-})
-
-
-//http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&status=Aprovado
-app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-    let curso = request.query.curso
-    let status = request.query.status
-    let dados = LionSchool.alunosStatusCurso(curso, status)
-
-    if(dados){
-        response.status(200)
-        response.json(dados)
-    }else{
-        response.status(404)
-        response.json({'status': 404, 'message': "Not found"})
-    }
-})
-
-
-//http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&ano-conclusao=2021
-app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-
-    let curso = request.query.curso
-    let aonC = request.query.ano_conclusao
-
-    let dados = LionSchool.alunosCursoDeAno(curso, aonC)
 
     if(dados){
         response.status(200)
