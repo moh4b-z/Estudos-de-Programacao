@@ -55,17 +55,20 @@ function alunosCurso(nomeCurso){
 function statusCurso(statusAlunosCursoS){
     let statusAC = statusAlunosCursoS
     let objetoRetorno = { status : statusAC, alunos : []}
-
-    if(Array.isArray(listaAlunos)){
-        listaAlunos.forEach(function(aluno){
-            if(aluno.status == statusAC){
-                objetoRetorno.alunos.push(aluno)
-            }
-        })
+    if(listaAlunos.some(aluno => aluno.status === statusAC)){
+        if(Array.isArray(listaAlunos)){
+            listaAlunos.forEach(function(aluno){
+                if(aluno.status == statusAC){
+                    objetoRetorno.alunos.push(aluno)
+                }
+            })
+        }else{
+            objetoRetorno = false
+        }
     }else{
         objetoRetorno = false
     }
-    
+
 
     return objetoRetorno
 }
@@ -98,9 +101,7 @@ function alunosStatusCurso(nomeCurso, statusAluno){
         })
     }else{
         objetoRetorno = false
-    }
-
-    
+    }    
 
     return objetoRetorno
 }
@@ -136,25 +137,19 @@ function filtro(statusAlunosCursoS, nomeCurso, statusAluno, anoDeComnclusao) {
     let anoDC = anoDeComnclusao
     let objetoRetorno = false
 
-    if (statusAC !== undefined || statusAC !== "") {
+    if (statusAC) {
         objetoRetorno = statusCurso(statusAC)
-    } else if (nCurso !== undefined && statusA !== undefined && anoDC === undefined) {
+    } else if (nCurso && statusA && !anoDC) { 
         objetoRetorno = alunosStatusCurso(nCurso, statusA)
-    } else if (nCurso !== "" && statusA !== "" && anoDC == "") {
-        objetoRetorno = alunosStatusCurso(nCurso, statusA)
-    } else if (nCurso !== undefined && anoDC !== undefined && statusA === undefined) {
-        objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
-    } else if (nCurso !== "" && anoDC !== "" && statusA === "") {
+    } else if (nCurso && anoDC && !statusA) { 
         objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
     }
-    console.log({ statusAC, nCurso, statusA, anoDC });
 
-    
     return objetoRetorno
 }
 
 // console.log(alunosCurso("DS"))
-// console.log(alunosStatusCurso("DS", "Reprovado"))
+console.log(alunosStatusCurso("DS", "EXAME"))
 // console.log(alunosCursoDeAno("DS", "2022"))
 // console.log(filtro("", "DS","","2022"))
 
