@@ -1,0 +1,57 @@
+
+/* --elden-ring-
+*/
+:root{
+    --elden-ring-primary-light-color: #95c8e1;/**/
+    --elden-ring-secondary-light-color: #b5c2d2;/**/
+    --elden-ring-tree-light-color: #8fabc1;/**/
+
+    --elden-ring-primary-light-opaque-color: #95c8e1;
+    --elden-ring-secondary-light-opaque-color: #b5c2d2;
+    --elden-ring-tree-light-opaque-color: #8fabc1;
+
+    --elden-ring-primary-dark-color: #09192f;/**/
+    --elden-ring-secondary-dark-color: #122945;/**/
+    --elden-ring-tree-dark-color: #465567;/**/
+
+    --elden-ring-primary-dark-opaque-color: #95c8e1;
+    --elden-ring-secondary-dark-opaque-color: #b5c2d2;
+    --elden-ring-tree-dark-opaque-color: #8fabc1;
+
+    --elden-ring-primary-contrast-color: #e3c758;/**/
+    --elden-ring-secondary-contrast-color: #aba36f;/**/
+    --elden-ring-tree-contrast-color: #9c9a70; /**/
+
+    --elden-ring-primary-contrast-opaque-color: #95c8e1;
+    --elden-ring-secondary-contrast-opaque-color: #b5c2d2;
+    --elden-ring-tree-contrast-opaque-color: #8fabc1;
+}
+
+
+/* --arcene-jinx-
+*/
+:root{
+    --arcene-jinx-primary-light-color: #0f80cf;/**/
+    --arcene-jinx-secondary-light-color: #184f60;/**/
+    --arcene-jinx-tree-light-color: #83f2ff;/**/
+
+    --arcene-jinx-primary-light-opaque-color: #5f77da;/**/
+    --arcene-jinx-secondary-light-opaque-color: #988879;/**/
+    --arcene-jinx-tree-light-opaque-color: #1e4d5c; /**/
+
+    --arcene-jinx-primary-dark-color: #0a0112;/**/
+    --arcene-jinx-secondary-dark-color: #26211b;/**/
+    --arcene-jinx-tree-dark-color: #28201d;/**/
+
+    --arcene-jinx-primary-dark-opaque-color: #174459;/**/
+    --arcene-jinx-secondary-dark-opaque-color: #403d7b;/**/
+    --arcene-jinx-tree-dark-opaque-color: #1b3999;/**/
+
+    --arcene-jinx-primary-contrast-color: #fa2cf5;/**/
+    --arcene-jinx-secondary-contrast-color: #cb4181;/**/
+    --arcene-jinx-tree-contrast-color: #de65a0;/**/
+
+    --arcene-jinx-primary-contrast-opaque-color: #86358a;/**/
+    --arcene-jinx-secondary-contrast-opaque-color: #eab6cf;/**/
+    --arcene-jinx-tree-contrast-opaque-color: #370345;/**/
+}

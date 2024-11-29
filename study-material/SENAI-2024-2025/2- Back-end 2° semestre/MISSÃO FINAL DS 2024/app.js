@@ -145,15 +145,9 @@ app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, respons
     let nCurso = request.query.nc
     let statusA = request.query.sa
     let anoDC = request.query.adc
-    let dados = false
+    let dados = LionSchool.filtro(statusAC, nCurso, statusA, anoDC)
 
-    if (statusAC !== undefined) {
-        objetoRetorno = statusCurso(statusAC)
-    } else if (nCurso !== undefined && statusA !== undefined && anoDC === undefined) {
-        objetoRetorno = alunosStatusCurso(nCurso, statusA)
-    } else if (nCurso !== undefined && anoDC !== undefined && statusA === undefined) {
-        objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
-    }
+    
 
     if(dados){
         response.status(200)

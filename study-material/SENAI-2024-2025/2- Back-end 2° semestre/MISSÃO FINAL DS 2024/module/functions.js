@@ -1,20 +1,20 @@
-var arrAlunos = require('./simulando-banco-de-dados/alunos')
+const arrAlunos = require('./simulando-banco-de-dados/alunos')
 const listaAlunos = arrAlunos.alunos
-var arrCursos = require('./simulando-banco-de-dados/cursos')
+const arrCursos = require('./simulando-banco-de-dados/cursos')
 const listaCursos = arrCursos.cursos
 
 // Recupera uma lista de todos os cursos oferecidos pela escola. 
 function cursosLista(){
     let objetoRetorno = {"cursos": listaCursos}
 
-    return objetoRetorno
+    return Array.isArray(listaCursos)? objetoRetorno : false
 }
 
 // Recupera uma lista de todos os alunos matriculados na escola. 
 function alunosLista(){
     let objetoRetorno = {"alunos": listaAlunos}
 
-    return objetoRetorno
+    return Array.isArray(listaAlunos)? objetoRetorno : false
 }
 
 // Recupera informações de um aluno específico com base no número de matrícula
@@ -23,7 +23,7 @@ function infoAluno(nubMatricula){
     let objetoRetorno = false
 
     listaAlunos.forEach(function(aluno){
-        if(aluno.matricula = matricula){
+        if(aluno.matricula == matricula){
             objetoRetorno = aluno
         }
     })
@@ -36,13 +36,17 @@ function alunosCurso(nomeCurso){
     let nCurso = nomeCurso
     let objetoRetorno = {curso : nCurso, alunos : []}
 
-    listaAlunos.forEach(function(aluno){
-        aluno.curso.forEach(function(CursosDoAluno){
-            if(CursosDoAluno.sigla = nCurso){
-                objetoRetorno.alunos.push(aluno)
-            }
+    if(listaCursos.some(curso => curso.sigla === nCurso)){
+        listaAlunos.forEach(function(aluno){
+            aluno.curso.forEach(function(CursosDoAluno){
+                if(CursosDoAluno.sigla == nCurso){
+                    objetoRetorno.alunos.push(aluno)
+                }
+            })
         })
-    })
+    }else{
+        objetoRetorno = false
+    }
 
     return objetoRetorno
 }
@@ -52,11 +56,16 @@ function statusCurso(statusAlunosCursoS){
     let statusAC = statusAlunosCursoS
     let objetoRetorno = { status : statusAC, alunos : []}
 
-    listaAlunos.forEach(function(aluno){
-        if(aluno.status = statusAC){
-            objetoRetorno.alunos.push(aluno)
-        }
-    })
+    if(Array.isArray(listaAlunos)){
+        listaAlunos.forEach(function(aluno){
+            if(aluno.status == statusAC){
+                objetoRetorno.alunos.push(aluno)
+            }
+        })
+    }else{
+        objetoRetorno = false
+    }
+    
 
     return objetoRetorno
 }
@@ -67,24 +76,31 @@ function alunosStatusCurso(nomeCurso, statusAluno){
     let statusA = statusAluno
     let objetoRetorno = { curso : nCurso, status : statusA, alunos : []}
 
-    listaAlunos.forEach(function(aluno){
-        let alunoRetorno = aluno
-        let disciplinasStaus = []
-        
-        alunoRetorno.curso.forEach(function(CursosDoAluno){
-            let cursoAluno = CursosDoAluno
-            if(CursosDoAluno.sigla == nCurso){
-                CursosDoAluno.disciplinas.forEach(function(disciplinaCurso){
-                    if(disciplinaCurso.status == statusA){
-                        disciplinasStaus.push(disciplinaCurso)
-                    }
-                    cursoAluno.disciplinas = disciplinasStaus
-                })
-                alunoRetorno.curso = cursoAluno
-                objetoRetorno.alunos.push(alunoRetorno)
-            }
+
+    if(listaCursos.some(curso => curso.sigla === nCurso)){
+        listaAlunos.forEach(function(aluno){
+            let alunoRetorno = aluno
+            let disciplinasStaus = []
+            
+            alunoRetorno.curso.forEach(function(CursosDoAluno){
+                let cursoAluno = CursosDoAluno
+                if(CursosDoAluno.sigla == nCurso){
+                    CursosDoAluno.disciplinas.forEach(function(disciplinaCurso){
+                        if(disciplinaCurso.status == statusA){
+                            disciplinasStaus.push(disciplinaCurso)
+                        }
+                        cursoAluno.disciplinas = disciplinasStaus
+                    })
+                    alunoRetorno.curso = cursoAluno
+                    objetoRetorno.alunos.push(alunoRetorno)
+                }
+            })
         })
-    })
+    }else{
+        objetoRetorno = false
+    }
+
+    
 
     return objetoRetorno
 }
@@ -95,13 +111,19 @@ function alunosCursoDeAno(nomeCurso, anoDeComnclusao){
     let anoDC = anoDeComnclusao
     let objetoRetorno = { curso : nCurso, anoDeComnclusao : anoDC, alunos : []}
 
-    listaAlunos.forEach(function(aluno){        
-        aluno.curso.forEach(function(CursosDoAluno){
-            if(CursosDoAluno.sigla == nCurso && CursosDoAluno.conclusao == anoDC){
-                objetoRetorno.alunos.push(aluno)                
-            }
+    
+
+    if(listaCursos.some(curso => curso.sigla === nCurso)){
+        listaAlunos.forEach(function(aluno){        
+            aluno.curso.forEach(function(CursosDoAluno){
+                if(CursosDoAluno.sigla == nCurso && CursosDoAluno.conclusao == anoDC){
+                    objetoRetorno.alunos.push(aluno)                
+                }
+            })
         })
-    })
+    }else{
+        objetoRetorno = false
+    }
 
     return objetoRetorno
 }
@@ -114,20 +136,27 @@ function filtro(statusAlunosCursoS, nomeCurso, statusAluno, anoDeComnclusao) {
     let anoDC = anoDeComnclusao
     let objetoRetorno = false
 
-    if (statusAC) {
+    if (statusAC !== undefined || statusAC !== "") {
         objetoRetorno = statusCurso(statusAC)
-    } else if (nCurso && statusA && !anoDC) {
+    } else if (nCurso !== undefined && statusA !== undefined && anoDC === undefined) {
         objetoRetorno = alunosStatusCurso(nCurso, statusA)
-    } else if (nCurso && anoDC && !statusA) {
+    } else if (nCurso !== "" && statusA !== "" && anoDC == "") {
+        objetoRetorno = alunosStatusCurso(nCurso, statusA)
+    } else if (nCurso !== undefined && anoDC !== undefined && statusA === undefined) {
+        objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
+    } else if (nCurso !== "" && anoDC !== "" && statusA === "") {
         objetoRetorno = alunosCursoDeAno(nCurso, anoDC)
     }
+    console.log({ statusAC, nCurso, statusA, anoDC });
+
     
     return objetoRetorno
 }
 
-
-console.log(alunosCursoDeAno("DS", "2021"))
-// console.log(filtro("Cursando", "","",""))
+// console.log(alunosCurso("DS"))
+// console.log(alunosStatusCurso("DS", "Reprovado"))
+// console.log(alunosCursoDeAno("DS", "2022"))
+// console.log(filtro("", "DS","","2022"))
 
 module.exports = {
     cursosLista,
