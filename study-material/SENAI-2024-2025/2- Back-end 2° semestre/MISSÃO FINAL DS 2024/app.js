@@ -44,6 +44,30 @@ app.get('/v1/lion-school/cursos', cors(), async function(request, response){
     }
 })
 
+app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc&sa&adc
+
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac=Finalizado&nc&sa&adc
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc=DS&sa=Aprovado&adc
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&ncDS&sa=&adc=2022
+    let statusAC = request.query.sac
+    let nCurso = request.query.nc
+    let statusA = request.query.sa
+    let anoDC = request.query.adc
+
+    let dados = LionSchool.filtro(statusAC, nCurso, statusA, anoDC)
+
+    console.log(dados)
+
+    if(dados){
+        response.status(200)
+        response.json(dados)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': "Not found"})
+    }
+})
+
 app.get('/v1/lion-school/alunos', cors(), async function(request, response){
 
     let dados = LionSchool.alunosLista()
@@ -62,6 +86,7 @@ app.get('/v1/lion-school/alunos/:matricula', cors(), async function(request, res
     let uf = request.params.matricula
 
     let dados = LionSchool.infoAluno(uf)
+    console.log('Testando a APIIIII')
 
     if(dados){
         response.status(200)
@@ -139,24 +164,6 @@ app.get('/v1/lion-school/alunos/cursos/:curso', cors(), async function(request, 
 
 
 
-app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac=&nc=&sa=&adc=
-    let statusAC = request.query.sac
-    let nCurso = request.query.nc
-    let statusA = request.query.sa
-    let anoDC = request.query.adc
-    let dados = LionSchool.filtro(statusAC, nCurso, statusA, anoDC)
-
-    
-
-    if(dados){
-        response.status(200)
-        response.json(dados)
-    }else{
-        response.status(404)
-        response.json({'status': 404, 'message': "Not found"})
-    }
-})
 
 
 app.listen('8080', function(){
