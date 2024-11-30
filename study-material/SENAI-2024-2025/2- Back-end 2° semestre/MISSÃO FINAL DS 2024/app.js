@@ -49,7 +49,7 @@ app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, respons
 
     // http://localhost:8080/v1/lion-school/alunos/filtro?sac=Finalizado&nc&sa&adc
     // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc=DS&sa=Aprovado&adc
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&ncDS&sa=&adc=2022
+    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc=DS&sa=&adc=2022
     let statusAC = request.query.sac
     let nCurso = request.query.nc
     let statusA = request.query.sa
@@ -57,7 +57,6 @@ app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, respons
 
     let dados = LionSchool.filtro(statusAC, nCurso, statusA, anoDC)
 
-    console.log(dados)
 
     if(dados){
         response.status(200)
@@ -86,8 +85,6 @@ app.get('/v1/lion-school/alunos/:matricula', cors(), async function(request, res
     let uf = request.params.matricula
 
     let dados = LionSchool.infoAluno(uf)
-    console.log('Testando a APIIIII')
-
     if(dados){
         response.status(200)
         response.json(dados)

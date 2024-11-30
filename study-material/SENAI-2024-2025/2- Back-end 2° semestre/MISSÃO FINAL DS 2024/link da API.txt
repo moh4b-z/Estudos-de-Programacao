@@ -1,0 +1,15 @@
+https://lionschool-api.onrender.com/v1/lion-school/cursos
+
+https://lionschool-api.onrender.com/v1/lion-school/alunos
+
+Ex:
+https://lionschool-api.onrender.com/v1/lion-school/alunos/20151001001
+
+Ex:
+https://lionschool-api.onrender.com/v1/lion-school/alunos/cursos/DS
+
+https://lionschool-api.onrender.com/v1/lion-school/alunos/filtro?sac=Finalizado&nc&sa&adc
+
+https://lionschool-api.onrender.com/v1/lion-school/alunos/filtro?sac&nc=DS&sa=Aprovado&adc
+
+https://lionschool-api.onrender.com/v1/lion-school/alunos/filtro?sac&nc=DS&sa=&adc=2022
