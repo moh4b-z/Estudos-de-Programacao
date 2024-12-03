@@ -62,3 +62,7 @@ path.join(dir, item.name)
 
 path.extname(item.name); // '.js', '.html', etc.
 // path.extname(item.name) retorna a extensão do arquivo.
+
+
+//__dirname
+//é o caminho da pasta onde o arquivo tá sendo rodado
