@@ -1,6 +1,0 @@
-Numero = int(input('digite o número: '))
-
-if 1 <= Numero <=9:
-    print ('O valor está na faixa permitida')
-else:
-    print ('O valor está fora da faixa permitida')
