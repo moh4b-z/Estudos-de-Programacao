@@ -1,1 +1,0 @@
-import {creatingJsFileView} from './module/functionsPastas'

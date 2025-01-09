@@ -6,3 +6,10 @@ O objetivo desse projeto é organizar os meus estudos sobre progremação ao mes
 
 ## Autor
 - [Mohammad Salim](https://www.linkedin.com/in/mohammad-salim-197481320/?originalSubdomain=br)
+
+
+
+# React + Vite
+
+- [Pagina do vite.js](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
+- [Pagina do vite.js](https://github.com/vitejs/vite-plugin-react-swc)
