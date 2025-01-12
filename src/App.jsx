@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './App.css'
+import SearchInput from './components/searchInput'
 
 function App() {
   const navigate = useNavigate()
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <SearchInput File="True" Folder="True"/>
       <button onClick={() => languagePageClick(task)}>aperte</button>
     </>
   );
