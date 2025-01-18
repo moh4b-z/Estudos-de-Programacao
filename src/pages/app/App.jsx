@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './App.css'
-import SearchInput from './components/searchInput'
+import '../CSSformatting.css'
+import SearchInput from '../../components/searchInput/searchInput'
+import HeaderAll from '../../components/header/header'
 
 function App() {
   const navigate = useNavigate()
@@ -15,7 +17,7 @@ function App() {
 
   return (
     <>
-      <SearchInput File="True" Folder="True"/>
+      <HeaderAll/>
       <button onClick={() => languagePageClick(task)}>aperte</button>
     </>
   );

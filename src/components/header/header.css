@@ -1,0 +1,28 @@
+header{
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh;
+    padding-inline: 5vw;
+}
+
+.logo{
+    width: 20%;
+    height: 100%;
+    
+}
+.Input{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 2vh;
+}
+nav{
+    width: 30%;
+    height: 100%;
+    padding-inline: 2vh;
+}

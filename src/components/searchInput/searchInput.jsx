@@ -1,38 +1,25 @@
 import { useState, useRef, useEffect } from 'react'
 import './searchInput.css'
-
-function ChoicesDiv(props) {
-    let tipe = "Folder"
-    if (props.fileOrfolder) {
-        tipe = "File"
-    }
-    return (
-        <div href={props.link} className="choices">
-            <p className="name">{props.name}</p>
-            <div>
-                <span>{props.path}</span>
-                <span>Tipo: {tipe}</span>
-            </div>
-        </div>
-    )
-}
+import clickedInOrOut from '../../functions/clickedInOrOut'
+import ChoicesDiv from './ChoicesDiv'
 
 function SearchInput(props) {
     const [name, setName] = useState('')
-    const [suggestions, setSuggestions] = useState([]) // Estado para armazenar as sugestões
+    const [suggestions, setSuggestions] = useState([])
     const typingTimeout = useRef(null)
-    const [isVisible, setIsVisible] = useState(false)
-    const inputRef = useRef(null)
-    const suggestionsRef = useRef(null)
+    const [visibility, setVisibility] = useState('none')
 
     const path = props.Path || ''
     const file = props.File || ''
     const folder = props.Folder || ''
     const exception = props.Exception || ''
+    const background_color = props.Background_color
+    const borderBottomColor = props.borderBottomColor
+
 
     async function ToBring(inputName) {
         if (!inputName.trim()) {
-            setSuggestions([]) // Limpa as sugestões se o input estiver vazio
+            setSuggestions([])
             return false
         }
 
@@ -104,35 +91,29 @@ function SearchInput(props) {
         ))
     }
 
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (
-                suggestionsRef.current &&
-                !suggestionsRef.current.contains(event.target) &&
-                inputRef.current &&
-                !inputRef.current.contains(event.target)
-            ) {
-                setIsVisible(false) // Esconde as sugestões
-            }
-        }
+    function visibilityNone(){
+        setVisibility("none")
+    }
+    function visibilityFlex(){
+        setVisibility("flex")
+    }
 
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [])
+    const ref = clickedInOrOut(visibilityFlex, visibilityNone)
+
 
     return (
-        <div className="total">
+        <div className="total" ref={ref}>
             <input
                 className="cInput"
                 type="text"
                 value={name}
                 onChange={handleInputChange}
-                onFocus={() => setIsVisible(true)}
                 placeholder={"Digite o nome" + messagePropsInput()}
+                style={{borderBottomColor: `${borderBottomColor}`}}
             />
-            <div className="suggestions">
+            <div className="suggestions" 
+                style={{display: `${visibility}`, 
+                backgroundColor: `${background_color}`}}>
                 {suggestionMaker()}
             </div>
         </div>
