@@ -1,10 +1,30 @@
-svg{
-    width: 20px;
-    height: 20px;
+:root{
+    --space-animation-time: 1s;
 }
 
 .listOfLanguages{
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.ImgHtml{
+    transition: 500ms;
+    animation: sumir var(--space-animation-time) infinite ease-in-out;
+}
+.ImgCss{
+    display: none;
+    transition: 500ms;
+    animation: sumir var(--space-animation-time) infinite ease-in-out;
+}
+
+@keyframes sumir {
+    
+}
+
+.listOfLanguages svg{
+    width: 20px;
+    height: 20px;
 }
