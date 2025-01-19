@@ -5,9 +5,29 @@
 .listOfLanguages{
     height: 100%;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     align-items: center;
     justify-content: space-between;
+    gap: calc(100%/7/5);
+    padding: 5px;
+}
+
+.listOfLanguages li{
+    box-sizing: border-box;
+}
+
+.listOfLanguages li a{
+    width: 100%;
+    height: 100%;
+}
+
+.listOfLanguages li a svg{
+    width: 100%;
+    transition: 0.3s;
+}
+.listOfLanguages li a svg:hover{
+    transform: scale(1.1);
 }
 
 .ImgHtml{
@@ -24,7 +44,3 @@
     
 }
 
-.listOfLanguages svg{
-    width: 20px;
-    height: 20px;
-}

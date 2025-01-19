@@ -5,7 +5,9 @@ import ListOfLanguages from '../listOfLanguages/listOfLanguages'
 
 function HeaderAll(){
     return <header>
-        <div className='logo'></div>
+        <div className='logo'>
+            <h1>Mohammad Salim Soares Silva</h1>
+        </div>
         <div className='Input'>
             <SearchInput File="True" Folder="True" Background_color="Red" borderBottomColor="black"/> 
         </div>

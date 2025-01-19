@@ -6,6 +6,7 @@
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 }
 
 ul, ol, li{
@@ -19,4 +20,12 @@ input{
     border: none;
     outline: none;
 }
-  
+
+
+@font-face {
+    font-family: 'Eastern';
+    src: url('../assets/fonts/TheLastShuriken.otf') format('opentype'),
+    url('../assets/fonts/TheLastShuriken.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
