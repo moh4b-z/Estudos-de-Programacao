@@ -9,7 +9,12 @@ function HeaderAll(){
             <h1>Mohammad Salim Soares Silva</h1>
         </div>
         <div className='Input'>
-            <SearchInput File="True" Folder="True" Background_color="Red" borderBottomColor="black"/> 
+            <SearchInput 
+                File="True" 
+                Folder="True" 
+                Background_color="var(--elden-ring-secondary-dark-color)" 
+                borderBottomColor="var(--elden-ring-primary-light-color)"
+            /> 
         </div>
         <nav>
             <ListOfLanguages/>

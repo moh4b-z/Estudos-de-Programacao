@@ -4,11 +4,12 @@ function ChoicesDiv(props) {
         tipe = "File"
     }
     return (
-        <div href={props.link} className="choices">
+        <div href={props.link} className="choices"
+        style={{color: `${props.color}`}}>
             <p className="name">{props.name}</p>
             <div>
-                <span>{props.path}</span>
-                <span>Tipo: {tipe}</span>
+                <span className="pathL">{props.path}</span>
+                <span className="typeL">Tipo: {tipe}</span>
             </div>
         </div>
     )

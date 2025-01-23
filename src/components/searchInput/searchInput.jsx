@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import './searchInput.css'
 import clickedInOrOut from '../../functions/clickedInOrOut'
 import ChoicesDiv from './ChoicesDiv'
+import SearchIcon from '../../assets/svg/searcj-outline'
 
 function SearchInput(props) {
     const [name, setName] = useState('')
@@ -65,9 +66,8 @@ function SearchInput(props) {
             clearTimeout(typingTimeout.current)
         }
 
-        // Define um novo timeout
         typingTimeout.current = setTimeout(() => {
-            ToBring(inputName); // Chama a API após o atraso
+            ToBring(inputName) // Chama a API após o atraso
         }, 500)
     }
 
@@ -84,6 +84,7 @@ function SearchInput(props) {
                 key={index}
                 name={suggestion.name}
                 path={suggestion.path}
+                color={borderBottomColor}
                 fileOrfolder={
                     suggestion.tipe ? suggestion.tipe === 'file' : props.File
                 }
@@ -102,14 +103,17 @@ function SearchInput(props) {
 
 
     return (
-        <div className="total" ref={ref}>
+        <div className="total" ref={ref} style={{borderBottomColor: `${borderBottomColor}`}}>
+            <div className='icon' style={{color: `${borderBottomColor}`}}>
+                <SearchIcon/>
+            </div>
             <input
                 className="cInput"
                 type="text"
                 value={name}
                 onChange={handleInputChange}
                 placeholder={"Digite o nome" + messagePropsInput()}
-                style={{borderBottomColor: `${borderBottomColor}`}}
+                
             />
             <div className="suggestions" 
                 style={{display: `${visibility}`, 

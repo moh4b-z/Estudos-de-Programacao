@@ -1,6 +1,14 @@
 .total{
+    display: flex;
     position: relative;
     width: 100%;
+    border-bottom: 2px solid;
+    transition: 0.5ms;
+}
+
+.icon{
+    height: 100%;
+    width: 20px;
 }
 
 .cInput{
@@ -11,7 +19,6 @@
     background-color: transparent;
     border: none;
     outline: none;
-    border-bottom: 2px solid;
     transition: 0.5s;
     color: #7d7d7d;
 }
@@ -25,8 +32,8 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 105%;
-    top:100%;
+    width: 100%;
+    top: calc(100% + 2px);
     z-index: 1;
 }
 
@@ -53,20 +60,59 @@
     flex-direction: column;
     width: 100%;
     height: 100px;
+    max-height: 100px;
     padding: 4px;
     color: black;
 }
+
 .choices:hover{
     background-color: #f0f8ff3c;
 }
 
 .name{
-    font-size: 12px;
+    font-size: 1.05rem;
+    height: 60%;
 }
 .choices div{
-    height: 25%;
+    font-size: 0.8rem;
+    height: 40%;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding-inline: 5px;
+    padding-inline: 2px;
 }
+
+.choices div span{
+    overflow: hidden;
+    height: 100%;
+    white-space: nowrap;
+    padding-inline: 2px;
+}
+
+.pathL{
+    width: 75%;
+    text-overflow: ellipsis;
+    /* background-color: aqua; */
+}
+
+.typeL{
+    width: 25%;
+    /* background-color: beige; */
+}
+
+/* @media (max-width: 888px) {
+    .total{
+        border-radius: 50%;
+        border: none;
+        width: 30px;
+        height: 30px;
+    }
+    .icon{
+        height: 100%;
+        width: 40px;
+    }
+    .cInput{
+        width: 0px;
+        height: 0px;
+    }
+} */

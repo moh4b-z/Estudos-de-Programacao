@@ -6,13 +6,13 @@ header{
     justify-content: center;
     padding: 2vh;
     padding-inline: 5vw;
-    background-color: aqua;
+    background-color: var(--elden-ring-secondary-dark-color);
 }
 
 .logo{
     width: 25%;
     height: 100%;
-    background-color: brown;
+    background-color: var(--elden-ring-primary-contrast-color);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
