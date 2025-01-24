@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './pages/app/App.jsx'
 import LanguagePage from './pages/languagePage/languagePage.jsx'
+import SearchPage from './pages/searchPage/searchPage.jsx'
+
 
 // Configuração das rotas
 const router = createBrowserRouter([
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/language",
     element: <LanguagePage />,
+  },
+  {
+    path: "/search",
+    element: <SearchPage />,
   },
 ])
 

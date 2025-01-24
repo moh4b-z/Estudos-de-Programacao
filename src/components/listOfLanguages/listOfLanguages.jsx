@@ -1,5 +1,4 @@
 import './listOfLanguages.css'
-import { useNavigate } from 'react-router-dom'
 import {ImgC, ImgCpp, ImgCss, ImgHtml, ImgJava, ImgJavascript, ImgPython} from '../../assets/svg/languageIcons'
 import {useGoToLanguagePage} from '../../functions/goToAnotherPage'
 

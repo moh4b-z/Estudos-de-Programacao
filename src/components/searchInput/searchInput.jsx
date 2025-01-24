@@ -3,6 +3,7 @@ import './searchInput.css'
 import clickedInOrOut from '../../functions/clickedInOrOut'
 import ChoicesDiv from './ChoicesDiv'
 import SearchIcon from '../../assets/svg/searcj-outline'
+import {useGoToSearchPage} from '../../functions/goToAnotherPage'
 
 function SearchInput(props) {
     const [name, setName] = useState('')
@@ -100,6 +101,7 @@ function SearchInput(props) {
     }
 
     const ref = clickedInOrOut(visibilityFlex, visibilityNone)
+    const goToSearchPage = useGoToSearchPage()
 
 
     return (
@@ -112,6 +114,9 @@ function SearchInput(props) {
                 type="text"
                 value={name}
                 onChange={handleInputChange}
+                onKeyDown={(e) => {if (e.key === 'Enter'){
+                    goToSearchPage({search: e.target.value})
+                }}}
                 placeholder={"Digite o nome" + messagePropsInput()}
                 
             />

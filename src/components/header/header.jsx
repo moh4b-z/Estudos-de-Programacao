@@ -10,8 +10,8 @@ function HeaderAll(){
         </div>
         <div className='Input'>
             <SearchInput 
-                File="True" 
-                Folder="True" 
+                File={true}
+                Folder={true} 
                 Background_color="var(--elden-ring-secondary-dark-color)" 
                 borderBottomColor="var(--elden-ring-primary-light-color)"
             /> 
