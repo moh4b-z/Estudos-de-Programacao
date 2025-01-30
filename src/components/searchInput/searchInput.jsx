@@ -4,6 +4,7 @@ import clickedInOrOut from '../../utils/clickedInOrOut'
 import ChoicesDiv from './ChoicesDiv'
 import SearchIcon from '../../assets/svg/searcj-outline'
 import {useGoToSearchPage} from '../../utils/goToAnotherPage'
+import { fetchSuggestions } from '../../api/apiSearch'
 
 function SearchInput(props) {
     const [name, setName] = useState('')
@@ -20,33 +21,10 @@ function SearchInput(props) {
 
 
     async function ToBring(inputName) {
-        if (!inputName.trim()) {
-            setSuggestions([])
-            return false
-        }
-
-        try {
-            const response = await fetch(
-                `https://api-estudos.onrender.com/v1/search/?pa=${path}&fi=${file}&fo=${folder}&e=${exception}&name=${inputName}`,
-                {
-                    method: 'GET',
-                }
-            )
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`)
-            }
-
-            const searchOutput = await response.json()
-            setSuggestions(searchOutput.paths || []) // Atualiza o estado com as sugestões ou uma lista vazia
-            console.log(searchOutput)
-            return searchOutput
-        } catch (error) {
-            console.error('Erro na requisição:', error.message);
-            setSuggestions([]) // Limpa as sugestões em caso de erro
-            return false
-        }
+        const resultado = await fetchSuggestions({ path, file, folder, exception, inputName: inputName })
+        setSuggestions(resultado)
     }
+   
 
     function messagePropsInput() {
         let message = " da pasta"
@@ -61,14 +39,12 @@ function SearchInput(props) {
     function handleInputChange(e) {
         const inputName = e.target.value
         setName(inputName)
-
-        // Limpa o timeout anterior, se existir
         if (typingTimeout.current) {
             clearTimeout(typingTimeout.current)
         }
-
+   
         typingTimeout.current = setTimeout(() => {
-            ToBring(inputName) // Chama a API após o atraso
+            ToBring(inputName)
         }, 500)
     }
 

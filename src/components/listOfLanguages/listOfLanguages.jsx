@@ -1,6 +1,6 @@
 import './listOfLanguages.css'
 import {ImgC, ImgCpp, ImgCss, ImgHtml, ImgJava, ImgJavascript, ImgPython} from '../../assets/svg/languageIcons'
-import {useGoToLanguagePage} from '../../functions/goToAnotherPage'
+import {useGoToLanguagePage} from '../../utils/goToAnotherPage'
 
 
 function ListOfLanguages(props){
