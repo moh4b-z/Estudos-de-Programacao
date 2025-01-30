@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import './searchInput.css'
-import clickedInOrOut from '../../functions/clickedInOrOut'
+import clickedInOrOut from '../../utils/clickedInOrOut'
 import ChoicesDiv from './ChoicesDiv'
 import SearchIcon from '../../assets/svg/searcj-outline'
-import {useGoToSearchPage} from '../../functions/goToAnotherPage'
+import {useGoToSearchPage} from '../../utils/goToAnotherPage'
 
 function SearchInput(props) {
     const [name, setName] = useState('')
