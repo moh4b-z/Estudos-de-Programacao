@@ -5,7 +5,7 @@ export const fetchSuggestions = async ({ path, file, folder, exception, inputNam
 
     try {
         const response = await fetch(
-            `https://api-estudos.onrender.com/v1/search/all/?pa=${path}&fi=${file}&fo=${folder}&e=${exception}&name=${inputName}`,
+            `https://api-estudos.onrender.com/v1/search/all/with/?pa=${path}&fi=${file}&fo=${folder}&e=${exception}&name=${inputName}`,
             {
                 method: 'GET',
             }

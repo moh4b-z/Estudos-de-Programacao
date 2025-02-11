@@ -62,6 +62,7 @@ function SearchInput(props) {
                 name={suggestion.name}
                 path={suggestion.path}
                 color={borderBottomColor}
+                link={suggestion.extname ==".html" ? suggestion.link : "#"}
                 fileOrfolder={
                     suggestion.tipe ? suggestion.tipe === 'file' : props.File
                 }
